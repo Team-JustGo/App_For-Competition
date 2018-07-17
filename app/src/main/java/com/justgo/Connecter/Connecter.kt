@@ -6,6 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Connecter {
     lateinit var retrofit: Retrofit
+    lateinit var api: API
 
     init {
         retrofit = Retrofit
@@ -14,5 +15,7 @@ class Connecter {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
+
+        api = retrofit.create(API::class.java)
     }
 }
