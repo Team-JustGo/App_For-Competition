@@ -140,3 +140,9 @@ class CircleIndicator : LinearLayout {
     }
 }
 
+var a = asdf()
+var b = a
+fun asdf() {
+    a = b
+}
+
