@@ -46,4 +46,9 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
     // anko
     implementation "org.jetbrains.anko:anko:0.10.5"
+    //kakao_login
+    compile group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+    compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
+    //facebook_login
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
 }

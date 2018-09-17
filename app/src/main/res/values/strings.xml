@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JustGo</string>
+    <string name="kakao_app_key">f6fe1ffe2074a94f62ee2c326beecb5f</string>
+    <string name="facebook_app_key">278528002907835</string>
 </resources>

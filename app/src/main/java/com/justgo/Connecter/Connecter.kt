@@ -11,7 +11,7 @@ class Connecter {
     init {
         retrofit = Retrofit
                 .Builder()
-                .baseUrl("Url will here!")
+                .baseUrl("http://ec2-52-79-240-33.ap-northeast-2.compute.amazonaws.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
