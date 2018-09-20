@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.facebook.CallbackManager;
-import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.justgo.R;
 import com.justgo.Util.FacebookLoginCallBack;
@@ -21,7 +20,6 @@ import java.util.Arrays;
 public class LoginActivity extends AppCompatActivity {
     private FacebookLoginCallBack facebookLoginCallBack;
     private CallbackManager callbackManager;
-    String name,userid,image;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                 LoginManager loginManager = LoginManager.getInstance();
                 loginManager.logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile", "email"));
                 loginManager.registerCallback(callbackManager,facebookLoginCallBack);
-                name=String.valueOf(Profile.getCurrentProfile().getName());
-                userid=String.valueOf(Profile.getCurrentProfile().getId());
-                image=String.valueOf(Profile.getCurrentProfile().getProfilePictureUri(200,200));
             }
         });
     }
@@ -54,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-
     }
 
 

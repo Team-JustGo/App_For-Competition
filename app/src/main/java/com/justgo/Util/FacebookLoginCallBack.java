@@ -15,6 +15,8 @@ import com.justgo.Connecter.RetrofitRepo;
 
 import org.json.JSONObject;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,6 +25,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
+    String uid;
+    String name;
+
     // 로그인 성공 시 호출 됩니다. Access Token 발급 성공.
     @Override
     public void onSuccess(LoginResult loginResult) {
@@ -30,14 +35,18 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
         Log.d("getId()", String.valueOf(Profile.getCurrentProfile().getId()));
         Log.d("getName()", String.valueOf(Profile.getCurrentProfile().getName())); // 이름
         Log.d("getProfilePictureUri", String.valueOf(Profile.getCurrentProfile().getProfilePictureUri(200, 200)));//프로필 사진
+        uid = Profile.getCurrentProfile().getId();
+        name = Profile.getCurrentProfile().getName();
         requestMe(loginResult);
         post();
     }
+
     // 로그인 창을 닫을 경우, 호출됩니다.
     @Override
     public void onCancel() {
         Log.e("Callback :: ", "onCancel");
     }
+
     // 로그인 실패 시에 호출됩니다.
     @Override
     public void onError(FacebookException error) {
@@ -54,33 +63,50 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
 
                     }
                 });
-
         Bundle parameters = new Bundle();
         parameters.putString("fields", "id,name,image");
         graphRequest.setParameters(parameters);
         graphRequest.executeAsync();
     }
+
     public void post() {
-        Retrofit retrofit = new Retrofit.Builder()
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        final API retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-52-79-240-33.ap-northeast-2.compute.amazonaws.com:7777/api/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .build();
+                .client(client)
+                .build()
+                .create(API.class);
 
-        API connecter = retrofit.create(API.class);
-        Call<RetrofitRepo> call = connecter.post_user("userId");
+        Call<RetrofitRepo> call = retrofit.post_user(uid);
         call.enqueue(new Callback<RetrofitRepo>() {
             @Override
             public void onResponse(@NonNull Call<RetrofitRepo> call, @NonNull Response<RetrofitRepo> response) {
-                Log.d("KIMTAEYOUNGBUNGSIN", "val " + response.code());
-                Log.d("HI","val"+response.toString());
+                Log.e("KIMTAEYOUNGBUNGSIN", "val " + response.code());
+
+                Log.e("HI", "val" + response.toString());
                 RetrofitRepo repo = response.body();
-                repo.setUserId(String.valueOf(Profile.getCurrentProfile().getId()));
-//                Log.d("KIMTAEYOUNGBUNGSIN", repo.getName() + " " + repo.getPicture() + " " + repo.getUserId());
+                Log.e("repo", "val" + repo);
+                if (response.code() == 418) {
+                    retrofit.auth_user(uid, name).enqueue(new Callback<RetrofitRepo>() {
+                        @Override
+                        public void onResponse(Call<RetrofitRepo> call, Response<RetrofitRepo> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<RetrofitRepo> call, Throwable t) {
+
+                        }
+                    });
+                }
             }
 
             @Override
             public void onFailure(Call<RetrofitRepo> call, Throwable t) {
-
+                Log.e("반성해라", "네");
             }
         });
     }

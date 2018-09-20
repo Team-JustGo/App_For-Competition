@@ -1,28 +1,22 @@
 package com.justgo.Connecter;
 
 public class RetrofitRepo {
-    String userId,name;
-    String picture;
+    String result;
+    String jwt;
 
-    public String getUserId() {
-        return userId;
+    public String getResult() {
+        return result;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setResult(String result) {
+        this.result = result;
     }
 
-    public String getName() {
-        return name;
+    public String getJwt() {
+        return jwt;
     }
 
-    public void setName(String name) { this.name = name; }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setJwt(String jwt) {
+        this.jwt = jwt;
     }
 }
