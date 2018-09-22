@@ -7,6 +7,7 @@ import android.support.annotation.LayoutRes
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.transition.ChangeBounds
+import android.transition.Fade
 import android.transition.TransitionManager
 import android.view.animation.OvershootInterpolator
 import com.justgo.R
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        main_startTravel_cardView.onClick {
+        main_startTravel_header.onClick {
             if (!isTravelStart) {
                 updateConstraints(R.layout.activity_main_travel, container)
                 updateConstraints(R.layout.activity_main_travel, travelCardView)
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         val newConstraintSet = ConstraintSet()
         newConstraintSet.clone(this, id)
         newConstraintSet.applyTo(layout)
-        val transition = ChangeBounds()
+        val transition = Fade()
         transition.interpolator = OvershootInterpolator()
         TransitionManager.beginDelayedTransition(layout)
     }
