@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 27
@@ -22,6 +23,9 @@ android {
     }
     productFlavors {
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -31,7 +35,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.android.support:support-v4:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -52,4 +56,13 @@ dependencies {
     compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
     //facebook_login
     compile 'com.facebook.android:facebook-android-sdk:4.+'
+    // google maps
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    kapt "com.android.databinding:compiler:3.1.2"
+}
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
 }

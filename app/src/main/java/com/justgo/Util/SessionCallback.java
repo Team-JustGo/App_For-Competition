@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.justgo.Connecter.API;
-import com.justgo.Connecter.RetrofitRepo;
+import com.justgo.Model.LoginResponseModel;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -79,24 +79,24 @@ String nickname;
                 .build()
                 .create(API.class);
 
-        Call<RetrofitRepo> call = retrofit.post_user(uid);
-        call.enqueue(new Callback<RetrofitRepo>() {
+        Call<LoginResponseModel> call = retrofit.post_user(uid);
+        call.enqueue(new Callback<LoginResponseModel>() {
             @Override
-            public void onResponse(@NonNull Call<RetrofitRepo> call, @NonNull Response<RetrofitRepo> response) {
+            public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
                 Log.e("KIMTAEYOUNGBUNGSIN", "val " + response.code());
 
                 Log.e("HI", "val" + response.toString());
-                RetrofitRepo repo = response.body();
+                LoginResponseModel repo = response.body();
                 Log.e("repo", "val" + repo);
                 if (response.code() == 418) {
-                    retrofit.auth_user(uid, nickname).enqueue(new Callback<RetrofitRepo>() {
+                    retrofit.auth_user(uid, nickname).enqueue(new Callback<LoginResponseModel>() {
                         @Override
-                        public void onResponse(Call<RetrofitRepo> call, Response<RetrofitRepo> response) {
+                        public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
 
                         }
 
                         @Override
-                        public void onFailure(Call<RetrofitRepo> call, Throwable t) {
+                        public void onFailure(Call<LoginResponseModel> call, Throwable t) {
 
                         }
                     });
@@ -104,7 +104,7 @@ String nickname;
             }
 
             @Override
-            public void onFailure(Call<RetrofitRepo> call, Throwable t) {
+            public void onFailure(Call<LoginResponseModel> call, Throwable t) {
                 Log.e("반성해라", "네");
             }
         });

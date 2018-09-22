@@ -1,6 +1,6 @@
-package com.justgo.Connecter;
+package com.justgo.Model;
 
-public class RetrofitRepo {
+public class LoginResponseModel {
     String result;
     String jwt;
 

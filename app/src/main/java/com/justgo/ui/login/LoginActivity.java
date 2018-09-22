@@ -26,8 +26,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         callbackManager = CallbackManager.Factory.create();
         facebookLoginCallBack = new FacebookLoginCallBack();
-        LinearLayout layout_kakao_button=findViewById(R.id.layout_kakao_button);
-        LinearLayout layout_facebook_button=findViewById(R.id.layout_facebook_button);
+        LinearLayout layout_kakao_button=findViewById(R.id.login_kakaoLogin_btn);
+        LinearLayout layout_facebook_button=findViewById(R.id.login_fbLogin_btn);
         layout_kakao_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

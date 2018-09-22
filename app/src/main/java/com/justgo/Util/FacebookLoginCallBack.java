@@ -11,7 +11,7 @@ import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.justgo.Connecter.API;
-import com.justgo.Connecter.RetrofitRepo;
+import com.justgo.Model.LoginResponseModel;
 
 import org.json.JSONObject;
 
@@ -80,32 +80,32 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
                 .build()
                 .create(API.class);
 
-        Call<RetrofitRepo> call = retrofit.post_user(uid);
-        call.enqueue(new Callback<RetrofitRepo>() {
+        Call<LoginResponseModel> call = retrofit.post_user(uid);
+        call.enqueue(new Callback<LoginResponseModel>() {
             @Override
-            public void onResponse(@NonNull Call<RetrofitRepo> call, @NonNull Response<RetrofitRepo> response) {
+            public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
                 Log.e("KIMTAEYOUNGBUNGSIN", "val " + response.code());
 
                 Log.e("HI", "val" + response.toString());
-                RetrofitRepo repo = response.body();
+                LoginResponseModel repo = response.body();
                 Log.e("repo", "val" + repo);
                 if (response.code() == 418) {
-                    retrofit.auth_user(uid, name).enqueue(new Callback<RetrofitRepo>() {
+                    retrofit.auth_user(uid, name).enqueue(new Callback<LoginResponseModel>() {
                         @Override
-                        public void onResponse(Call<RetrofitRepo> call, Response<RetrofitRepo> response) {
-                            Log.d("전송성공","ok");
+                        public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
+                            Log.d("전송성공", "ok");
                         }
 
                         @Override
-                        public void onFailure(Call<RetrofitRepo> call, Throwable t) {
-                            Log.d("전송성공","fail");
+                        public void onFailure(Call<LoginResponseModel> call, Throwable t) {
+                            Log.d("전송성공", "fail");
                         }
                     });
                 }
             }
 
             @Override
-            public void onFailure(Call<RetrofitRepo> call, Throwable t) {
+            public void onFailure(Call<LoginResponseModel> call, Throwable t) {
                 Log.e("반성해라", "네");
             }
         });
