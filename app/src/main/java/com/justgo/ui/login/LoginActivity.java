@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
@@ -26,9 +26,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         callbackManager = CallbackManager.Factory.create();
         facebookLoginCallBack = new FacebookLoginCallBack();
-        Button bt_kakao_login=findViewById(R.id.bt_kakao_login);
-        Button bt_facebook_login=findViewById(R.id.bt_facebook_login);
-        bt_kakao_login.setOnClickListener(new View.OnClickListener() {
+        LinearLayout layout_kakao_button=findViewById(R.id.layout_kakao_button);
+        LinearLayout layout_facebook_button=findViewById(R.id.layout_facebook_button);
+        layout_kakao_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Session session = Session.getCurrentSession();
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
                 session.open(AuthType.KAKAO_TALK, LoginActivity.this);
             }
         });
-        bt_facebook_login.setOnClickListener(new View.OnClickListener() {
+        layout_facebook_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LoginManager loginManager = LoginManager.getInstance();

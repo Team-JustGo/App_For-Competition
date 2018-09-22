@@ -93,12 +93,12 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
                     retrofit.auth_user(uid, name).enqueue(new Callback<RetrofitRepo>() {
                         @Override
                         public void onResponse(Call<RetrofitRepo> call, Response<RetrofitRepo> response) {
-
+                            Log.d("전송성공","ok");
                         }
 
                         @Override
                         public void onFailure(Call<RetrofitRepo> call, Throwable t) {
-
+                            Log.d("전송성공","fail");
                         }
                     });
                 }
