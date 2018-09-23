@@ -8,9 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="mainTextTheme" parent="@android:style/Widget.TextView">
+    <style name="mainTextStyle" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">24sp</item>
-        <item name="android:layout_marginTop">24sp</item>
+        <item name="android:layout_marginTop">24dp</item>
+    </style>
+
+    <style name="backdropTextStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorSemiTransparent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">48dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
     </style>
 </resources>

@@ -2,95 +2,57 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.justgo.ui.main.MainActivity">
-
-    <android.support.constraint.Guideline
-        android:id="@+id/main_left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/main_top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="48dp" />
+    android:layout_height="280dp"
+    android:background="@color/colorPrimary">
 
     <ImageView
-        android:id="@+id/main_profile_iv"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        android:background="@android:color/white"
-        android:contentDescription="ProfileImage"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/main_top_guideline" />
-
-    <!--<TextView
-        android:id="@+id/main_status_tv"
+        android:id="@+id/main_backdrop_up_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:text="@string/main_set_location"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/main_profile_iv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
-
-
-    <TextView
-        android:id="@+id/main_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/main_my_name"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_profile_iv" />
-
+        android:src="@drawable/ic_arrow_up_24px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/main_myTrips_tv"
-        style="@style/mainTextTheme"
+        android:id="@+id/main_backdrop_first"
+        style="@style/backdropTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_my_trips"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_name_tv" />
+        android:text="Set Loaction"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/main_changeLanguage_tv"
-        style="@style/mainTextTheme"
+        android:id="@+id/main_backdrop_second"
+        style="@style/backdropTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_change_language"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_myTrips_tv" />
+        android:text="Set transportation"
+        app:layout_constraintStart_toStartOf="@+id/main_backdrop_first"
+        app:layout_constraintTop_toBottomOf="@+id/main_backdrop_first" />
 
     <TextView
-        android:id="@+id/main_secession_tv"
-        style="@style/mainTextTheme"
+        android:id="@+id/main_backdrop_third"
+        style="@style/backdropTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_secession"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_changeLanguage_tv" />
+        android:text="Travel subject"
+        app:layout_constraintStart_toStartOf="@+id/main_backdrop_second"
+        app:layout_constraintTop_toBottomOf="@+id/main_backdrop_second" />
 
     <TextView
-        android:id="@+id/main_about_tv"
-        style="@style/mainTextTheme"
+        android:id="@+id/main_backdrop_fourth"
+        style="@style/backdropTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_about"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_secession_tv" />
+        android:text="Time limit"
+        app:layout_constraintStart_toStartOf="@+id/main_backdrop_third"
+        app:layout_constraintTop_toBottomOf="@+id/main_backdrop_third" />
+
 
 </android.support.constraint.ConstraintLayout>
