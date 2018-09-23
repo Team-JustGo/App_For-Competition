@@ -10,4 +10,6 @@
     <string name="main_change_language">Change Language</string>
     <string name="main_set_location">Set location</string>
     <string name="main_lets_go">Let\'s go</string>
+    <string name="selected_subjects">Selected subjects</string>
+    <string name="done">Done</string>
 </resources>
