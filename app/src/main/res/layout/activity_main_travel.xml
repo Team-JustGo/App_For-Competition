@@ -1,97 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.justgo.ui.main.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/main_top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="48dp" />
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.justgo.ui.main.MainViewModel" />
+    </data>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/main_backdrop_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="280dp" />
-
-    <include
-        android:id="@+id/main_profile_include"
-        layout="@layout/main_profile"
-        android:visibility="gone" />
-
-    <include
-        android:id="@+id/main_toolbar_include"
-        layout="@layout/main_toolbar"
-        android:visibility="visible" />
-
-    <include
-        android:id="@+id/main_backdrop_include"
-        layout="@layout/main_backdrop"
-        android:visibility="gone" />
-
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/main_startTravel_cardView"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="?attr/actionBarSize"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context="com.justgo.ui.main.MainActivity">
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/main_startTravel_constraint"
+        <android.support.constraint.Guideline
+            android:id="@+id/main_top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="48dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/main_backdrop_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="280dp" />
+
+        <include
+            android:id="@+id/main_profile_include"
+            layout="@layout/main_profile"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/main_toolbar_include"
+            layout="@layout/main_toolbar"
+            android:visibility="visible" />
+
+        <include
+            android:id="@+id/main_backdrop_include"
+            layout="@layout/main_backdrop"
+            android:visibility="gone" />
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/main_startTravel_cardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/back_top_corner">
+            android:layout_height="0dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/main_startTravel_header"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/main_startTravel_constraint"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/back_top_corner">
 
-                <android.support.constraint.ConstraintLayout
+                <android.support.v7.widget.CardView
+                    android:id="@+id/main_startTravel_header"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/main_card_status_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:elevation="8dp"
-                        android:text="set your Loaction"
-                        android:textColor="#000000"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
-            </android.support.v7.widget.CardView>
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-            <FrameLayout
-                android:id="@+id/main_startTravel_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_startTravel_header" />
+                        <TextView
+                            android:id="@+id/main_card_status_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:elevation="8dp"
+                            android:text="set your Loaction"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.v7.widget.CardView>
 
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+                <FrameLayout
+                    android:id="@+id/main_startTravel_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/main_startTravel_header" />
 
-</android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

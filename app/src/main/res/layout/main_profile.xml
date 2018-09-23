@@ -1,96 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.justgo.ui.main.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/main_left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp" />
+    <data>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/main_top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="48dp" />
+        <variable
+            name="mainViewModel"
+            type="com.justgo.ui.main.MainViewModel" />
+    </data>
 
-    <ImageView
-        android:id="@+id/main_profile_iv"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        android:background="@android:color/white"
-        android:contentDescription="ProfileImage"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/main_top_guideline" />
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context="com.justgo.ui.main.MainActivity">
 
-    <!--<TextView
-        android:id="@+id/main_status_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:text="@string/main_set_location"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/main_profile_iv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
+        <android.support.constraint.Guideline
+            android:id="@+id/main_left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
 
+        <android.support.constraint.Guideline
+            android:id="@+id/main_top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="48dp" />
 
-    <TextView
-        android:id="@+id/main_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/main_my_name"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_profile_iv" />
+        <ImageView
+            android:id="@+id/main_profile_iv"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:background="@android:color/white"
+            android:contentDescription="ProfileImage"
+            app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/main_top_guideline" />
+
+        <TextView
+            android:id="@+id/main_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/main_my_name"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/main_profile_iv" />
 
 
-    <TextView
-        android:id="@+id/main_myTrips_tv"
-        style="@style/mainTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_my_trips"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_name_tv" />
+        <TextView
+            android:id="@+id/main_myTrips_tv"
+            style="@style/mainTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_my_trips"
+            app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/main_name_tv" />
 
-    <TextView
-        android:id="@+id/main_changeLanguage_tv"
-        style="@style/mainTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_change_language"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_myTrips_tv" />
+        <TextView
+            android:id="@+id/main_changeLanguage_tv"
+            style="@style/mainTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_change_language"
+            app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/main_myTrips_tv" />
 
-    <TextView
-        android:id="@+id/main_secession_tv"
-        style="@style/mainTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_secession"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_changeLanguage_tv" />
+        <TextView
+            android:id="@+id/main_secession_tv"
+            style="@style/mainTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_secession"
+            app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/main_changeLanguage_tv" />
 
-    <TextView
-        android:id="@+id/main_about_tv"
-        style="@style/mainTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_about"
-        app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/main_secession_tv" />
+        <TextView
+            android:id="@+id/main_about_tv"
+            style="@style/mainTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_about"
+            app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/main_secession_tv" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

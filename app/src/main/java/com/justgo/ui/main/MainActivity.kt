@@ -1,5 +1,8 @@
 package com.justgo.ui.main
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.LayoutRes
@@ -9,24 +12,31 @@ import android.transition.Fade
 import android.transition.TransitionManager
 import android.view.animation.OvershootInterpolator
 import com.justgo.R
+import com.justgo.Util.DataBindingActivity
+import com.justgo.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_backdrop.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DataBindingActivity<ActivityMainBinding>() {
+
+    override fun getLayoutId(): Int = R.layout.activity_main
 
     val container by lazy { find<ConstraintLayout>(R.id.activity_main) }
     val travelCardView by lazy { find<ConstraintLayout>(R.id.main_startTravel_constraint) }
 
+    val viewModel by lazy { ViewModelProviders.of(this)[MainViewModel::class.java] }
     var isTravelStart = false
     var isBackdropOpened = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        binding.mainViewModel = viewModel
+//        viewModel.selectedItem.observe(this, Observer {
+//            when
+//        })
         main_startTravel_header.onClick {
             if (!isTravelStart) {
                 updateConstraints(R.layout.activity_main_travel, container)
