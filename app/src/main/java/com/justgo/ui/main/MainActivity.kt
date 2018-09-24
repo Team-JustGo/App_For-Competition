@@ -66,7 +66,7 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
 
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.main_startTravel_fragment, SelectSubjectFragment())
+        fragmentTransaction.add(R.id.main_startTravel_fragment, SetRangeFragment())
         fragmentTransaction.commit()
     }
 
