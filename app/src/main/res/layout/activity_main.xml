@@ -69,7 +69,7 @@
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/main_startTravel_constraint"
                 android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_height="match_parent">
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/main_startTravel_header"
@@ -96,6 +96,15 @@
                             app:layout_constraintTop_toTopOf="parent" />
                     </android.support.constraint.ConstraintLayout>
                 </android.support.v7.widget.CardView>
+
+                <FrameLayout
+                    android:id="@+id/main_startTravel_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/main_startTravel_header" />
 
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>

@@ -34,18 +34,16 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.mainViewModel = viewModel
-//        viewModel.selectedItem.observe(this, Observer {
-//            when
-//        })
+
         main_startTravel_header.onClick {
             if (!isTravelStart) {
                 updateConstraints(R.layout.activity_main_travel, container)
-                updateConstraints(R.layout.activity_main_travel, travelCardView)
+//                updateConstraints(R.layout.activity_main_travel, travelCardView)
                 isTravelStart = true
                 isBackdropOpened = false
             } else {
                 updateConstraints(R.layout.activity_main, container)
-                updateConstraints(R.layout.activity_main_travel, travelCardView)
+//                updateConstraints(R.layout.activity_main_travel, travelCardView)
                 isTravelStart = false
                 isBackdropOpened = false
             }
@@ -66,6 +64,10 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
             isBackdropOpened = false
         }
 
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.main_startTravel_fragment, SelectSubjectFragment())
+        fragmentTransaction.commit()
     }
 
     fun updateConstraints(@LayoutRes id: Int, layout: ConstraintLayout) {

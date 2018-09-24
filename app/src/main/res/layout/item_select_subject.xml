@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="32dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:background="@drawable/back_primary_round_non_filled"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp">
+
+    <TextView
+        android:id="@+id/selectSubjectItem_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="ASDF" />
+
+</android.support.constraint.ConstraintLayout>

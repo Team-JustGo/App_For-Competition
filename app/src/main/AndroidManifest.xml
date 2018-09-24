@@ -3,6 +3,9 @@
     package="com.justgo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
-            android:name="com.google.geo.API_KEY"
+            android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA_noKNA94FfLwxU52FtyeSPcQ0gE3Mkzs" />
 
         <activity android:name=".ui.SplashActivity">
