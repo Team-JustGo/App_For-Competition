@@ -5,8 +5,9 @@
     android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/arrive_header"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:background="@color/colorMain">
 
         <ImageView
@@ -27,14 +28,20 @@
             app:layout_constraintBottom_toTopOf="@id/arrive_area_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/arrive_navi_img"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabBackground="@drawable/back_tab_selected_shape_arrive"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="fixed"
+            app:tabGravity="center"
+            app:tabSelectedTextColor="@color/colorWhite"
+            app:tabTextColor="#347871" />
 
         <android.support.constraint.ConstraintLayout
-            android:background="@drawable/back_tv_round_shape_arrive"
             android:id="@+id/arrive_area_layout"
-            android:layout_width="328dp"
+            android:layout_width="350dp"
             android:layout_height="40dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/back_tv_round_shape_arrive"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/arrive_tab">
@@ -50,48 +57,48 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:textColor="@color/colorWhite"
-                android:text="PyungYang, North Korea"
-                android:textSize="14sp"
-                android:layout_marginLeft="48dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="48dp"
+                android:text="PyungYang, North Korea"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
-            android:background="@drawable/back_tv_round_shape_arrive"
             android:id="@+id/arrive_place_layout"
-            android:layout_width="328dp"
+            android:layout_width="350dp"
             android:layout_height="40dp"
             android:layout_marginTop="13dp"
+            android:background="@drawable/back_tv_round_shape_arrive"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/arrive_area_layout">
 
             <ImageView
-                android:src="@drawable/ic_place_arrive"
-                android:layout_marginLeft="8dp"
                 android:id="@+id/arrive_place_img"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/ic_place_arrive"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="48dp"
                 android:text="KumGangSan Mount"
                 android:textColor="@color/colorWhite"
-                android:layout_marginLeft="48dp"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -101,9 +108,10 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/arrive_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="396dp"
+        android:layout_height="0dp"
         android:background="@drawable/back_fm_round_shape_arrive"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/arrive_header">
 
     </android.support.v4.view.ViewPager>
 
