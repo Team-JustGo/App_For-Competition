@@ -17,5 +17,6 @@ public abstract class DataBindingActivity<T extends ViewDataBinding> extends App
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, getLayoutId());
+        binding.setLifecycleOwner(this);
     }
 }

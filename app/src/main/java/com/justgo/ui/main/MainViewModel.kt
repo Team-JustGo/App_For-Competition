@@ -7,11 +7,31 @@ import com.justgo.Util.DisposableViewModel
 
 
 class MainViewModel : DisposableViewModel() {
-    private val _selectedItem = MutableLiveData<Int>().apply { value = 1 }
-    val selectedItem: LiveData<Int> get() = _selectedItem
+    private val _selectedFragment = MutableLiveData<Int>().apply { value = 1 }
+    private val _selectedSubject = MutableLiveData<ArrayList<String>>().apply { arrayOf("") }
+    private val _selectableSubject = MutableLiveData<ArrayList<String>>()
+            .apply { value = arrayListOf("Art Gallery", "Religious architecture", "Department Store", "Shopping mall", "Electronics Store", "Home goods Store", "Museum", "Park") }
+    private val _minRange = MutableLiveData<Int>().apply { value = 0 }
+    private val _maxRange = MutableLiveData<Int>().apply { value = 50 }
+
+    val selectedFragment: LiveData<Int> get() = _selectedFragment
+    val selectedSubject: LiveData<ArrayList<String>> get() = _selectedSubject
+    val selectableSubject: LiveData<ArrayList<String>> get() = _selectableSubject
+    val minRange: LiveData<Int> get() = _minRange
+    val maxRange: LiveData<Int> get() = _maxRange
 
     fun changeSelectedItem(value: Int) {
-        _selectedItem.value = value
-        Log.d("MainViewModel", "selectedItem value is changed: ${selectedItem.value}")
+        _selectedFragment.value = value
+        Log.d("MainViewModel", "selectedFragment value is changed: ${selectedFragment.value}")
     }
+
+    fun setMinRange(value: Int) {
+        _minRange.value = value
+    }
+
+    fun setMaxRange(value: Int) {
+        _maxRange.value = value
+    }
+
+    fun getSelectedItem(): Int = selectedFragment.value!!
 }

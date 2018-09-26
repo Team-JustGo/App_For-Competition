@@ -1,68 +1,84 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.justgo.ui.main.SetRangeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/setRange_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="Range"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/setRange_rangeStart_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/setRange_tv"
-        app:layout_constraintTop_toBottomOf="@+id/setRange_tv"
-        tools:text="54 km" />
+        <variable
+            name="mainViewModel"
+            type="com.justgo.ui.main.MainViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/setRange_range_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="~"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/setRange_rangeStart_tv"
-        app:layout_constraintTop_toBottomOf="@+id/setRange_tv" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.justgo.ui.main.SetRangeFragment">
 
-    <TextView
-        android:id="@+id/setRange_rangeEnd_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/setRange_range_tv"
-        app:layout_constraintTop_toBottomOf="@+id/setRange_tv"
-        tools:text="4 km" />
+        <TextView
+            android:id="@+id/setRange_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:text="Range"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <io.apptik.widget.MultiSlider
-        android:id="@+id/setRange_slider"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:rotation="90"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setRange_rangeStart_tv"
-        app:rangeColor="@color/colorPrimary"
-        app:thumbColor="@color/colorPrimary"
-        app:trackColor="#1000" />
+        <TextView
+            android:id="@+id/setRange_rangeStart_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/setRange_tv"
+            app:layout_constraintTop_toBottomOf="@+id/setRange_tv"
+            tools:text="54 km" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/setRange_range_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="~"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/setRange_rangeStart_tv"
+            app:layout_constraintTop_toBottomOf="@+id/setRange_tv" />
+
+        <TextView
+            android:id="@+id/setRange_rangeEnd_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/setRange_range_tv"
+            app:layout_constraintTop_toBottomOf="@+id/setRange_tv"
+            tools:text="4 km" />
+
+        <io.apptik.widget.MultiSlider
+            android:id="@+id/setRange_slider"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            app:drawThumbsApart="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setRange_rangeStart_tv"
+            app:rangeColor="@color/colorPrimary"
+            app:scaleMax="50"
+            app:scaleMin="0"
+            app:stepsThumbsApart="5"
+            app:thumbValue1="30"
+            app:thumbValue2="50"
+            app:thumbColor="@color/colorPrimary"
+            app:trackColor="#1000" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

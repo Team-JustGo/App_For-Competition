@@ -32,8 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="19dp"
+            android:onClick="@{() -> mainViewModel.changeSelectedItem(1)}"
             android:text="Set Location"
-            android:textColor="@{mainViewModel.selectedItem.getValue() == 1 ? @android:color/white : @color/colorSemiTransparent }"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() == 1 ? @android:color/white : @color/colorSemiTransparent }"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:onClick="@{() -> mainViewModel.changeSelectedItem(2)}"
             android:text="Set transportation"
-            android:textColor="@{mainViewModel.selectedItem.getValue() == 2 ? @android:color/white : @color/colorSemiTransparent }"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() == 2 ? @android:color/white : @color/colorSemiTransparent }"
             app:layout_constraintStart_toStartOf="@+id/main_backdrop_first"
             app:layout_constraintTop_toBottomOf="@+id/main_backdrop_first" />
 
@@ -53,8 +54,9 @@
             style="@style/backdropTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> mainViewModel.changeSelectedItem(3)}"
             android:text="Travel subject"
-            android:textColor="@{mainViewModel.selectedItem.getValue() == 3 ? @android:color/white : @color/colorSemiTransparent }"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() == 3 ? @android:color/white : @color/colorSemiTransparent }"
             app:layout_constraintStart_toStartOf="@+id/main_backdrop_second"
             app:layout_constraintTop_toBottomOf="@+id/main_backdrop_second" />
 
@@ -63,8 +65,9 @@
             style="@style/backdropTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> mainViewModel.changeSelectedItem(4)}"
             android:text="Time limit"
-            android:textColor="@{mainViewModel.selectedItem.getValue() == 4 ? @android:color/white : @color/colorSemiTransparent }"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() == 4 ? @android:color/white : @color/colorSemiTransparent }"
             app:layout_constraintStart_toStartOf="@+id/main_backdrop_third"
             app:layout_constraintTop_toBottomOf="@+id/main_backdrop_third" />
 

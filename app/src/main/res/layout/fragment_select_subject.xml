@@ -1,84 +1,94 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.justgo.ui.main.SelectSubjectFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/selectSubject_left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
+    <data>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/selectSubject_right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp" />
+        <variable
+            name="mainViewModel"
+            type="com.justgo.ui.main.MainViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/selectSubject_selected_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/selected_subjects"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.justgo.ui.main.SelectSubjectFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/selectSubject_selected_rv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layoutDirection="ltr"
-        app:layout_constraintEnd_toStartOf="@+id/selectSubject_right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/selectSubject_selected_tv" />
+        <android.support.constraint.Guideline
+            android:id="@+id/selectSubject_left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="#3000"
-        app:layout_constraintEnd_toEndOf="@id/selectSubject_right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/selectSubject_selected_rv" />
+        <android.support.constraint.Guideline
+            android:id="@+id/selectSubject_right_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
 
-    <TextView
-        android:id="@+id/selectedSubject_select_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_horizontal"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        android:text="Select subject" />
+        <TextView
+            android:id="@+id/selectSubject_selected_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/selected_subjects"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/selectSubject_select_rv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/selectSubject_right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/selectedSubject_select_tv" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/selectSubject_selected_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layoutDirection="ltr"
+            app:layout_constraintEnd_toStartOf="@+id/selectSubject_right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/selectSubject_selected_tv" />
 
-    <Button
-        style="@style/startTravelButtonStyle"
-        android:layout_width="180dp"
-        android:layout_height="48dp"
-        android:text="@string/done"
-        android:elevation="4dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/selectSubject_right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline" />
-</android.support.constraint.ConstraintLayout>
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#3000"
+            app:layout_constraintEnd_toEndOf="@id/selectSubject_right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/selectSubject_selected_rv" />
+
+        <TextView
+            android:id="@+id/selectedSubject_select_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="Select subject"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/selectableSubject_select_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/selectSubject_right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/selectedSubject_select_tv" />
+
+        <Button
+            style="@style/startTravelButtonStyle"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="32dp"
+            android:elevation="4dp"
+            android:text="@string/done"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/selectSubject_right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/selectSubject_left_guideline" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

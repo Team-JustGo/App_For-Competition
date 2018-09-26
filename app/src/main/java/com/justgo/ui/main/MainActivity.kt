@@ -1,9 +1,7 @@
 package com.justgo.ui.main
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.constraint.ConstraintLayout
@@ -27,6 +25,10 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
     val container by lazy { find<ConstraintLayout>(R.id.activity_main) }
     val travelCardView by lazy { find<ConstraintLayout>(R.id.main_startTravel_constraint) }
 
+    val setLocationFragment = SetLocationFragment()
+    val selectSubjectFragment = SelectSubjectFragment()
+    //    val  = SelectSubjectFragment()
+    val setRangeFragment = SetRangeFragment()
     val viewModel by lazy { ViewModelProviders.of(this)[MainViewModel::class.java] }
     var isTravelStart = false
     var isBackdropOpened = false
@@ -36,14 +38,12 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
         binding.mainViewModel = viewModel
 
         main_startTravel_header.onClick {
-            if (!isTravelStart) {
+            if (!isTravelStart || isBackdropOpened) {
                 updateConstraints(R.layout.activity_main_travel, container)
-//                updateConstraints(R.layout.activity_main_travel, travelCardView)
                 isTravelStart = true
                 isBackdropOpened = false
             } else {
                 updateConstraints(R.layout.activity_main, container)
-//                updateConstraints(R.layout.activity_main_travel, travelCardView)
                 isTravelStart = false
                 isBackdropOpened = false
             }
@@ -65,9 +65,32 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
         }
 
 
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.main_startTravel_fragment, SetRangeFragment())
-        fragmentTransaction.commit()
+        viewModel.selectedFragment.observe(this, Observer {
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+
+            when (it) {
+                1 -> {
+                    fragmentTransaction.replace(R.id.main_startTravel_fragment, setLocationFragment).commit()
+                    updateConstraints(R.layout.activity_main_travel, container)
+                }
+                2 -> {
+                    fragmentTransaction.replace(R.id.main_startTravel_fragment, selectSubjectFragment).commit()
+                    updateConstraints(R.layout.activity_main_travel, container)
+                }
+                3 -> {
+                    fragmentTransaction.replace(R.id.main_startTravel_fragment, selectSubjectFragment).commit()
+                    updateConstraints(R.layout.activity_main_travel, container)
+                }
+                4 -> {
+                    fragmentTransaction.replace(R.id.main_startTravel_fragment, setRangeFragment).commit()
+                    updateConstraints(R.layout.activity_main_travel, container)
+                }
+            }
+        })
+
+//        val fragmentTransaction = supportFragmentManager.beginTransaction()
+//        fragmentTransaction.add(R.id.main_startTravel_fragment, SetRangeFragment())
+//        fragmentTransaction.commit()
     }
 
     fun updateConstraints(@LayoutRes id: Int, layout: ConstraintLayout) {

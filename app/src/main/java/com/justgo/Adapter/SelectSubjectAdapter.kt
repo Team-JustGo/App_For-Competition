@@ -17,7 +17,13 @@ class SelectSubjectAdapter(val models: ArrayList<String>) : RecyclerView.Adapter
 
     override fun getItemCount(): Int = models.size
 
-    override fun onBindViewHolder(holder: SelectSubjectViewHolder, position: Int) = holder.bind(models[position])
+    override fun onBindViewHolder(holder: SelectSubjectViewHolder, position: Int) {
+        holder.bind(models[position])
+        holder.text.onClick {
+            models.removeAt(holder.adapterPosition)
+            notifyItemRemoved(holder.adapterPosition)
+        }
+    }
 
     class SelectSubjectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val text: TextView = itemView.find(R.id.selectSubjectItem_tv)
