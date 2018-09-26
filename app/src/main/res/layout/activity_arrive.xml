@@ -29,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/arrive_navi_img"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabBackground="@drawable/back_tab_selected_shape_arrive"
+            app:tabBackground="@drawable/selector_tab_arrive"
             app:tabIndicatorHeight="0dp"
             app:tabMode="fixed"
             app:tabGravity="center"
