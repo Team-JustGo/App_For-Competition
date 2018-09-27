@@ -18,16 +18,19 @@ import com.justgo.Adapter.SelectSubjectAdapter
 import com.justgo.Adapter.SelectedSubjectAdapter
 
 import com.justgo.R
+import com.justgo.Util.DataBindingFragment
+import com.justgo.databinding.FragmentSelectSubjectBinding
 import org.jetbrains.anko.find
 
 
-class SelectSubjectFragment : Fragment() {
+class SelectSubjectFragment : DataBindingFragment<FragmentSelectSubjectBinding>() {
+    override fun getLayoutId(): Int = R.layout.fragment_select_subject
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_select_subject, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
         val viewModel by lazy { ViewModelProviders.of(activity!!)[MainViewModel::class.java] }
-
+        binding.mainViewModel = viewModel
         val selectableRecyclerView = view.find<RecyclerView>(R.id.selectableSubject_select_rv)
         val selectedRecyclerView = view.find<RecyclerView>(R.id.selectSubject_selected_rv)
         selectableRecyclerView.addItemDecoration(SpacingItemDecoration(resources.getDimensionPixelOffset(R.dimen.dimen_0), resources.getDimensionPixelOffset(R.dimen.dimen_8)))
@@ -35,7 +38,7 @@ class SelectSubjectFragment : Fragment() {
 
         val stringList = arrayListOf("asdf", "DF", "ASdf", "dfdfff", "Asdfff", "제발;;;")
 
-        Log.d("SelectableSubject", viewModel.selectableSubject.value!!.toString() )
+        Log.d("SelectableSubject", viewModel.selectableSubject.value!!.toString())
         selectableRecyclerView.adapter = SelectSubjectAdapter(viewModel.selectableSubject.value!!)
         selectableRecyclerView.layoutManager = getChipsLayoutManager()
 //        selectedRecyclerView.adapter = SelectedSubjectAdapter(viewModel.selectedSubject.value!!)

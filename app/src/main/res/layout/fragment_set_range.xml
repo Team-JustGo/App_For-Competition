@@ -65,9 +65,10 @@
             android:id="@+id/setRange_slider"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:rotation="90"
             app:drawThumbsApart="true"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/setRange_next_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/setRange_rangeStart_tv"
@@ -75,10 +76,20 @@
             app:scaleMax="50"
             app:scaleMin="0"
             app:stepsThumbsApart="5"
+            app:thumbColor="@color/colorPrimary"
             app:thumbValue1="30"
             app:thumbValue2="50"
-            app:thumbColor="@color/colorPrimary"
             app:trackColor="#1000" />
 
+        <Button
+            android:id="@+id/setRange_next_btn"
+            style="@style/startTravelButtonStyle"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="Done"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>

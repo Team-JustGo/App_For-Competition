@@ -2,6 +2,7 @@ package com.justgo.ui.main
 
 
 import android.Manifest
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -25,31 +26,35 @@ import android.widget.Button
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
+import com.justgo.Util.DataBindingFragment
+import com.justgo.databinding.FragmentSetLocationBinding
 import kotlinx.android.synthetic.main.fragment_set_location.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.find
 
 
-class SetLocationFragment : Fragment(), OnMapReadyCallback, LocationListener {
+class SetLocationFragment : DataBindingFragment<FragmentSetLocationBinding>(), OnMapReadyCallback, LocationListener {
+    override fun getLayoutId(): Int = R.layout.fragment_set_location
 
-    lateinit var defaultView: View
     lateinit var googleMap: GoogleMap
+    val viewModel by lazy { ViewModelProviders.of(activity!!)[MainViewModel::class.java] }
     val locationManager: LocationManager by lazy { activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager }
-    val mapView: MapView  by lazy { defaultView.find<MapView>(R.id.setLocation_map) }
+    val mapView: MapView  by lazy { view.find<MapView>(R.id.setLocation_map) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        defaultView = inflater.inflate(R.layout.fragment_set_location, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
+        binding.mainViewModel = viewModel
         permissionCheck()
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
 
         if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED)
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 400, 1000F, this);
-        defaultView.find<Button>(R.id.setLocation_submit_btn).onClick {
-            Log.d("Camera Position" , googleMap.cameraPosition.target.toString())
+        view.find<Button>(R.id.setLocation_submit_btn).onClick {
+            Log.d("Camera Position", googleMap.cameraPosition.target.toString())
         }
-        return defaultView
+        return view
     }
 
     fun permissionCheck() {

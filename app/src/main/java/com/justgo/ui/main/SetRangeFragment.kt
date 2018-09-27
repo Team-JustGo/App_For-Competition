@@ -42,11 +42,11 @@ class SetRangeFragment : DataBindingFragment<FragmentSetRangeBinding>() {
         }
 
         viewModel.minRange.observe(this, Observer {
-            setRange_rangeStart_tv.text = it.toString()
+            setRange_rangeStart_tv.text = "$it Km"
         })
 
         viewModel.maxRange.observe(this, Observer {
-            setRange_rangeEnd_tv.text = it.toString()
+            setRange_rangeEnd_tv.text = "$it Km"
         })
 
         return view

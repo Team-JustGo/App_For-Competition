@@ -25,6 +25,7 @@
             android:layout_width="180dp"
             android:layout_height="48dp"
             android:layout_marginBottom="32dp"
+            android:onClick="@{() -> mainViewModel.changeSelectedItem(2)}"
             android:text="@string/main_set_location"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

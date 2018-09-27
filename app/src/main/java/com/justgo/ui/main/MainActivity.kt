@@ -12,11 +12,13 @@ import android.view.animation.OvershootInterpolator
 import com.justgo.R
 import com.justgo.Util.DataBindingActivity
 import com.justgo.databinding.ActivityMainBinding
+import com.justgo.ui.SplashActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_backdrop.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 class MainActivity : DataBindingActivity<ActivityMainBinding>() {
 
@@ -36,7 +38,9 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.mainViewModel = viewModel
-
+        viewModel.getTravelListEvent.observe(this, Observer {
+//            startActivity<SplashActivity>()
+        })
         main_startTravel_header.onClick {
             if (!isTravelStart || isBackdropOpened) {
                 updateConstraints(R.layout.activity_main_travel, container)
@@ -87,10 +91,6 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
                 }
             }
         })
-
-//        val fragmentTransaction = supportFragmentManager.beginTransaction()
-//        fragmentTransaction.add(R.id.main_startTravel_fragment, SetRangeFragment())
-//        fragmentTransaction.commit()
     }
 
     fun updateConstraints(@LayoutRes id: Int, layout: ConstraintLayout) {
