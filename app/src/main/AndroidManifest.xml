@@ -18,12 +18,14 @@
         </activity>
 
         <activity android:name=".ui.Arrive.ArriveActivity">
+        </activity>
+
+        <activity android:name=".ui.MyTrip.MyTripActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
     </application>

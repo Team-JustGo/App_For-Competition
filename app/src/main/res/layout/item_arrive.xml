@@ -5,10 +5,12 @@
     android:layout_height="93dp">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="64dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -40,10 +42,12 @@
     </android.support.constraint.ConstraintLayout>
 
     <View
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
         android:background="#14000000"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

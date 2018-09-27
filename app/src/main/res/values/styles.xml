@@ -9,4 +9,8 @@
         <item name="android:statusBarColor">@color/colorStatusBar</item>
     </style>
 
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/colorWhite</item>
+    </style>
+
 </resources>

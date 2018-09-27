@@ -2,20 +2,19 @@ package com.justgo.Model
 
 class TourInfoModel {
 
+    var result : String = ""
     var name: String = ""
     var address: String = ""
-    var info: String = ""
     var image: String = ""
     var theme: String = ""
     var nearSpot: ArrayList<NearSpot> = ArrayList()
 
     class NearSpot {
-        var id = ""
         var title = ""
         var image = ""
-        var rate = 0
         var address = ""
-        var theme = ""
+        var lat = 0.0
+        var lng = 0.0
     }
 
     var nearRestaurant: ArrayList<NearRestaurant> = arrayListOf()
@@ -24,7 +23,8 @@ class TourInfoModel {
         var name = ""
         var address = ""
         var image = ""
-        var rate = 0
+        var lat = 0.0
+        var lng = 0.0
     }
 
     var comment: ArrayList<Comment> = arrayListOf()
