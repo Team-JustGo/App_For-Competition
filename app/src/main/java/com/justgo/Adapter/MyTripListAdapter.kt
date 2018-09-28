@@ -21,8 +21,6 @@ class MyTripListAdapter (val items : ArrayList<MyTripItem>, val tags : ArrayList
     }
 
     override fun onBindViewHolder(holder: MyTripCustomView, position: Int) {
-
-
         holder.title.text = items[position].title
         holder.howfar.text = items[position].howfar
         with(holder.taglist){

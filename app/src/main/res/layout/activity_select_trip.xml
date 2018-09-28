@@ -27,12 +27,14 @@
                 android:layout_height="wrap_content" />
 
             <ImageView
+                android:tint="@color/colorWhite"
+                android:src="@drawable/ic_select_trip_filter"
                 android:layout_marginRight="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_width="16dp"
-                android:layout_height="16dp" />
+                android:layout_width="24dp"
+                android:layout_height="24dp" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -49,5 +51,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/select_trip_toolbar" />
+    
+    <Button
+        android:visibility="gone"
+        android:id="@+id/select_trip_btn"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/back_btn_round_shape_select_trip"
+        android:textSize="14dp"
+        android:text="Done"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="180dp"
+        android:layout_height="48dp" />
 
 </android.support.constraint.ConstraintLayout>

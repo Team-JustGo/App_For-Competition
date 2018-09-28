@@ -50,6 +50,8 @@ dependencies {
     // google maps
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
 }
 kotlin {
     experimental {

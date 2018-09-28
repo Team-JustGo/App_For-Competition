@@ -3,7 +3,7 @@ package com.justgo.Util
 import android.content.Context
 import android.content.SharedPreferences
 
-class PrefManager {
+
 
     private fun getPref(context: Context): SharedPreferences {
         return context.getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -28,4 +28,3 @@ class PrefManager {
     }
 
     private fun getKey(isAccess: Boolean): String = if (isAccess) "Access" else "Refresh"
-}
