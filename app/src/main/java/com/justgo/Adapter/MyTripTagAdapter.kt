@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.justgo.R
-import com.justgo.ui.MyTrip.MyTripTagItem
-import org.w3c.dom.Text
+import com.justgo.Model.MyTripTagItem
 
 class MyTripTagAdapter(val items : ArrayList<MyTripTagItem>) : RecyclerView.Adapter<MyTripTagAdapter.MyTripTagCustomViewHolder>() {
 

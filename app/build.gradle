@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 27
@@ -21,6 +22,9 @@ android {
         }
     }
     productFlavors {
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -47,9 +51,15 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
     // anko
     implementation "org.jetbrains.anko:anko:0.10.5"
+    //kakao_login
+    compile group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+    compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
+    //facebook_login
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
     // google maps
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
+    kapt "com.android.databinding:compiler:3.1.2"
 }
 kotlin {
     experimental {

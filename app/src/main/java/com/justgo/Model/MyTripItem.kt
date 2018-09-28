@@ -1,3 +1,3 @@
-package com.justgo.ui.MyTrip
+package com.justgo.Model
 
 data class MyTripItem(val title : String, val howfar : String)

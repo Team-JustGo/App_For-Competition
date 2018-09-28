@@ -11,8 +11,9 @@ import retrofit2.http.Part
 
 val api = Connecter.createApi()
 
-fun login(userId: String, name: String, picture: MultipartBody.Part, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.login(userId, name, picture), model)
+//fun login(userId: String, name: String, picture: MultipartBody.Part, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.login(userId, name, picture), model)
 fun main(token: String, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.main(token), model)
+
 fun changeImage(token: String, image: MultipartBody.Part, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.changeImage(token, image), model)
 fun changeName(token: String, profileName: String, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.changeName(token, profileName), model)
 fun saveTourSpot(token: String, tourId: String, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.saveTourSpot(token, tourId), model)

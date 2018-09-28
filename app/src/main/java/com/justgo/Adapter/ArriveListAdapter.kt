@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.justgo.R
-import com.justgo.ui.Arrive.ArriveItem
+import com.justgo.Model.ArriveItem
 
 class ArriveListAdapter(val items: ArrayList<ArriveItem>) : RecyclerView.Adapter<ArriveListAdapter.ArriveCustomViewHolder>() {
 

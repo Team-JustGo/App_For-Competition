@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.justgo.R
-import com.justgo.ui.MyTrip.MyTripItem
-import com.justgo.ui.MyTrip.MyTripTagItem
+import com.justgo.Model.MyTripItem
+import com.justgo.Model.MyTripTagItem
 
 class MyTripListAdapter (val items : ArrayList<MyTripItem>, val tags : ArrayList<MyTripTagItem>, val context : Context)
     : RecyclerView.Adapter<MyTripListAdapter.MyTripCustomView>() {

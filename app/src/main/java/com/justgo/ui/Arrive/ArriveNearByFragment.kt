@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.justgo.Adapter.ArriveListAdapter
+import com.justgo.Model.ArriveItem
 import com.justgo.R
 
 
@@ -14,14 +15,14 @@ class ArriveNearByFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootview = inflater.inflate(R.layout.fragment_arrive_nearby, container, false)
 
-        var sampledata = ArrayList<ArriveItem>().apply {
+        val sampledata = ArrayList<ArriveItem>().apply {
             for (i in 1..10)
-                add(ArriveItem("","NearBy","subtitle"))
+                add(ArriveItem("", "NearBy", "subtitle"))
         }
 
-        var adapter = ArriveListAdapter(sampledata)
+        val adapter = ArriveListAdapter(sampledata)
 
-        var nearbylist = rootview.findViewById<RecyclerView>(R.id.arrive_nearby_recycler)
+        val nearbylist = rootview.findViewById<RecyclerView>(R.id.arrive_nearby_recycler)
         nearbylist.adapter = adapter
 
         return rootview
