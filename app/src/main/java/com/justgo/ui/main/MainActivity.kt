@@ -9,6 +9,7 @@ import android.support.constraint.ConstraintSet
 import android.transition.Fade
 import android.transition.TransitionManager
 import android.view.animation.OvershootInterpolator
+import com.justgo.Connecter.getTourList
 import com.justgo.R
 import com.justgo.Util.DataBindingActivity
 import com.justgo.databinding.ActivityMainBinding
@@ -19,6 +20,8 @@ import kotlinx.android.synthetic.main.main_toolbar.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import retrofit2.http.QueryMap
 
 class MainActivity : DataBindingActivity<ActivityMainBinding>() {
 
@@ -39,7 +42,7 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         binding.mainViewModel = viewModel
         viewModel.getTravelListEvent.observe(this, Observer {
-//            startActivity<SplashActivity>()
+            //            startActivity<SplashActivity>()
         })
         main_startTravel_header.onClick {
             if (!isTravelStart || isBackdropOpened) {
@@ -68,13 +71,12 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
             isBackdropOpened = false
         }
 
-
         viewModel.selectedFragment.observe(this, Observer {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
 
             when (it) {
                 1 -> {
-                    fragmentTransaction.replace(R.id.main_startTravel_fragment, setLocationFragment).commit()
+                    fragmentTransaction.replace(R.id.main_startTravel_fragment, SetLocationFragment()).commit()
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 2 -> {
@@ -89,6 +91,29 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
                     fragmentTransaction.replace(R.id.main_startTravel_fragment, setRangeFragment).commit()
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
+                5 -> {
+                    toast("되냐")
+                    val map = mapOf<String, Any>(
+                            "theme" to viewModel.selectableSubject.value!!.map { "$it," },
+                            "minDistance" to viewModel.minRange.value!!.toInt() * 1000,
+                            "maxDistance" to viewModel.maxRange.value!!.toInt() * 1000,
+                            "lat" to viewModel.lat.value!!,
+                            "lng" to viewModel.lng.value!!
+                    )
+                    val theme = viewModel.selectableSubject.value!!.reduce { x, y -> "$x ,$y" }
+                    val min = viewModel.minRange.value!!.toInt() * 1000
+                    val max = viewModel.maxRange.value!!.toInt() * 1000
+                    val lat = viewModel.lat.value!!
+                    val lng = viewModel.lng.value!!
+                    getTourList(lat, lng, theme, min, max) {
+                        onSuccess = {
+                            toast("${code()}")
+                        }
+                        onFailure = {
+                            toast("왜안되는데;")
+                        }
+                    }
+                }
             }
         })
     }
@@ -97,8 +122,8 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
         val newConstraintSet = ConstraintSet()
         newConstraintSet.clone(this, id)
         newConstraintSet.applyTo(layout)
-        val transition = Fade()
-        transition.interpolator = OvershootInterpolator()
+//        val transition = Fade()
+//        transition.interpolator = OvershootInterpolator()
         TransitionManager.beginDelayedTransition(layout)
     }
 }

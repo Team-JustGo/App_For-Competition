@@ -15,6 +15,7 @@ import com.justgo.R
 import com.justgo.Util.DataBindingFragment
 import com.justgo.databinding.FragmentSetRangeBinding
 import io.apptik.widget.MultiSlider
+import kotlinx.android.synthetic.main.fragment_set_location.*
 import kotlinx.android.synthetic.main.fragment_set_range.*
 import org.jetbrains.anko.find
 
@@ -27,7 +28,7 @@ class SetRangeFragment : DataBindingFragment<FragmentSetRangeBinding>() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         super.onCreateView(inflater, container, savedInstanceState)
-
+        binding.mainViewModel = viewModel
         val slider: MultiSlider = view.find(R.id.setRange_slider)
         val rangeStartTextView: TextView = view.find(R.id.setRange_rangeStart_tv)
         val rangeEndTextView: TextView = view.find(R.id.setRange_rangeEnd_tv)
