@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="mainViewModel"
             type="com.justgo.ui.main.MainViewModel" />
@@ -28,7 +29,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Set Location"
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -40,7 +40,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:text="1 / 4"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"

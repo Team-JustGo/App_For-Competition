@@ -10,12 +10,12 @@ import org.jetbrains.anko.toast
 
 
 class MainViewModel : DisposableViewModel() {
-    private val _selectedFragment = MutableLiveData<Int>().apply { value = 1 }
+    private val _selectedFragment = MutableLiveData<Int>().apply { value = 0 }
     private val _selectedSubject = MutableLiveData<ArrayList<String>>().apply { value = arrayListOf() }
     val selectedSubjectList = arrayListOf<String>()
     private val _selectableSubject = MutableLiveData<ArrayList<String>>()
-            .apply { value = arrayListOf("Art Gallery", "Religious architecture", "Department Store", "Shopping mall", "Electronics Store", "Home goods Store", "Museum", "Park") }
-    val selectableSubjectList = arrayListOf("Art Gallery", "Religious architecture", "Department Store", "Shopping mall", "Electronics Store", "Home goods Store", "Museum", "Park")
+            .apply { value = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "서점", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰") }
+    val selectableSubjectList = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "서점", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰")
     private val _minRange = MutableLiveData<Int>().apply { value = 0 }
     private val _maxRange = MutableLiveData<Int>().apply { value = 50 }
     private val _getTravelListEvent = SingleLiveEvent<Any>()
@@ -69,14 +69,30 @@ class MainViewModel : DisposableViewModel() {
         _lng.value = value
     }
 
+//    val getStatusName = when (selectedFragment.value) {
+//        1 -> "시작장소 선택"
+//        2 -> "교통수단 선택"
+//        3 -> "여행 주제 선택"
+//        4 -> "거리 제한 선택"
+//        else -> "sibal"
+//    }
+//
+//    fun getStatusStep() = when (selectedFragment.value) {
+//        1 -> "1 / 4"
+//        2 -> "2 / 4"
+//        3 -> "3 / 4"
+//        4 -> "4 / 4"
+//        else -> "()"
+//    }
+
     fun getTourList() {
 
-        val theme = selectableSubject.value?.reduce { x, y -> "$x ,$y" }
+        val theme = generateSubject()
         val min = minRange.value?.toInt()?.times(1000)
         val max = maxRange.value?.toInt()?.times(1000)
         val lat = lat.value
         val lng = lng.value
-        if (lat != null && lng != null && theme != null && min != null && max != null) {
+        if (lat != null && lng != null && min != null && max != null) {
             getTourList(lat, lng, theme, min, max) {
                 onSuccess = {
                     //                toast("${code()}")
@@ -90,14 +106,23 @@ class MainViewModel : DisposableViewModel() {
 
     fun generateSubject(): String {
         var sibal = ""
-//        selectedSubject.value!!.forEach {
-//            sibal += when (it) {
-//                "Art Gallery" -> "art_gallery, "
-//                ""
-//                else -> ""
-//            }
-//        }
-        return "시발련"
+        selectedSubjectList.forEach {
+            sibal += when (it) {
+                "놀이공원 및 오락시설" -> "amusement_park "
+                "서점" -> "book_store,"
+                "아트 갤러리" -> "art_gallery,"
+                "백화점" -> "department_store,"
+                "박물관" -> "museum,"
+                "공원" -> "park,"
+                "동물원" -> "zoo,"
+                "옷가게" -> "clothing_store,"
+                "영화관" -> "movie_theater,"
+                "쇼핑몰" -> "shopping_mall,"
+                else -> ""
+            }
+        }
+//        sibal.removeRange(sibal.length - 1, sibal.length - 1)
+        return sibal
     }
 
     fun getSelectedItem(): Int = selectedFragment.value!!

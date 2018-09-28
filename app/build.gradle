@@ -67,6 +67,8 @@ dependencies {
 
     implementation 'io.apptik.widget:multislider:1.3'
     implementation 'gun0912.ted:tedpermission:2.2.1'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 }
 kotlin {
     experimental {

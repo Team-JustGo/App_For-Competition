@@ -76,20 +76,33 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
 
             when (it) {
+                0 -> {
+                    fragmentTransaction.replace(R.id.main_startTravel_fragment, SetLocationFragment()).commit()
+                    main_toolbar_tv.text = "시작장소 선택"
+                    main_toolbar_progress_tv.text = "1 / 4"
+                }
                 1 -> {
                     fragmentTransaction.replace(R.id.main_startTravel_fragment, SetLocationFragment()).commit()
+                    main_toolbar_tv.text = "시작장소 선택"
+                    main_toolbar_progress_tv.text = "1 / 4"
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 2 -> {
                     fragmentTransaction.replace(R.id.main_startTravel_fragment, setTransportationFragment).commit()
+                    main_toolbar_tv.text = "교통수단 선택"
+                    main_toolbar_progress_tv.text = "2 / 4"
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 3 -> {
                     fragmentTransaction.replace(R.id.main_startTravel_fragment, selectSubjectFragment).commit()
+                    main_toolbar_progress_tv.text = "3 / 4"
+                    main_toolbar_tv.text = "여행 주제 선택"
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 4 -> {
                     fragmentTransaction.replace(R.id.main_startTravel_fragment, setRangeFragment).commit()
+                    main_toolbar_tv.text = "거리 제한 선택"
+                    main_toolbar_progress_tv.text = "4 / 4"
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 5 -> {

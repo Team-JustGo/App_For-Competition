@@ -67,7 +67,6 @@ class SetLocationFragment : DataBindingFragment<FragmentSetLocationBinding>(), O
                 .check();
     }
 
-    @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap) {
         this.googleMap = map
         mapView.onStart()
@@ -76,8 +75,8 @@ class SetLocationFragment : DataBindingFragment<FragmentSetLocationBinding>(), O
 //            marker.setPosition(googleMap.cameraPosition.target)//to center in map
 //        }
         Log.d("GoogleMap", "Map is called")
-//        if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED)
-        googleMap.isMyLocationEnabled = true
+        if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED)
+            googleMap.isMyLocationEnabled = true
 
         googleMap.setOnCameraIdleListener {
             val cameraPosition = map.cameraPosition
