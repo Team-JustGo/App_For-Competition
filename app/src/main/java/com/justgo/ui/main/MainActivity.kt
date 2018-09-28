@@ -32,6 +32,7 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
 
     val setLocationFragment = SetLocationFragment()
     val selectSubjectFragment = SelectSubjectFragment()
+    val setTransportationFragment = SetTransportationFragment()
     //    val  = SelectSubjectFragment()
     val setRangeFragment = SetRangeFragment()
     val viewModel by lazy { ViewModelProviders.of(this)[MainViewModel::class.java] }
@@ -80,7 +81,7 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 2 -> {
-                    fragmentTransaction.replace(R.id.main_startTravel_fragment, selectSubjectFragment).commit()
+                    fragmentTransaction.replace(R.id.main_startTravel_fragment, setTransportationFragment).commit()
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 3 -> {
@@ -92,27 +93,7 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 5 -> {
-                    toast("되냐")
-                    val map = mapOf<String, Any>(
-                            "theme" to viewModel.selectableSubject.value!!.map { "$it," },
-                            "minDistance" to viewModel.minRange.value!!.toInt() * 1000,
-                            "maxDistance" to viewModel.maxRange.value!!.toInt() * 1000,
-                            "lat" to viewModel.lat.value!!,
-                            "lng" to viewModel.lng.value!!
-                    )
-                    val theme = viewModel.selectableSubject.value!!.reduce { x, y -> "$x ,$y" }
-                    val min = viewModel.minRange.value!!.toInt() * 1000
-                    val max = viewModel.maxRange.value!!.toInt() * 1000
-                    val lat = viewModel.lat.value!!
-                    val lng = viewModel.lng.value!!
-                    getTourList(lat, lng, theme, min, max) {
-                        onSuccess = {
-                            toast("${code()}")
-                        }
-                        onFailure = {
-                            toast("왜안되는데;")
-                        }
-                    }
+                    viewModel.getTourList()
                 }
             }
         })
