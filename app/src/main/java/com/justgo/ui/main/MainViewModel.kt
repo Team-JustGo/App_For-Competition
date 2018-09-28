@@ -105,10 +105,10 @@ class MainViewModel : DisposableViewModel() {
     }
 
     fun generateSubject(): String {
-        var sibal = ""
+        val sibal = StringBuilder()
         selectedSubjectList.forEach {
-            sibal += when (it) {
-                "놀이공원 및 오락시설" -> "amusement_park "
+            sibal.append(when (it) {
+                "놀이공원 및 오락시설" -> "amusement_park,"
                 "서점" -> "book_store,"
                 "아트 갤러리" -> "art_gallery,"
                 "백화점" -> "department_store,"
@@ -119,10 +119,12 @@ class MainViewModel : DisposableViewModel() {
                 "영화관" -> "movie_theater,"
                 "쇼핑몰" -> "shopping_mall,"
                 else -> ""
-            }
+            })
         }
+
+        sibal.deleteCharAt(sibal.length - 1)
 //        sibal.removeRange(sibal.length - 1, sibal.length - 1)
-        return sibal
+        return sibal.toString()
     }
 
     fun getSelectedItem(): Int = selectedFragment.value!!

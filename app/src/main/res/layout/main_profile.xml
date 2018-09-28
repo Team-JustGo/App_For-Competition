@@ -35,8 +35,8 @@
             android:id="@+id/main_profile_iv"
             android:layout_width="88dp"
             android:layout_height="88dp"
-            android:background="@android:color/white"
             android:contentDescription="ProfileImage"
+            android:background="@drawable/back_white_oval"
             app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
             app:layout_constraintTop_toTopOf="@+id/main_top_guideline" />
 

@@ -34,7 +34,7 @@
             android:layout_marginTop="19dp"
             android:onClick="@{() -> mainViewModel.changeSelectedItem(1)}"
             android:text="Set Location"
-            android:textColor="@{mainViewModel.selectedFragment.getValue() == 1 ? @android:color/white : @color/colorSemiTransparent }"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() &lt; 2 ? @android:color/white : @color/colorSemiTransparent }"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
