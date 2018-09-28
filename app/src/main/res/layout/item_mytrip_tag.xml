@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/mytrip_item_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_v_round_shape_mytrip">
+
+    <TextView
+        android:id="@+id/mytrip_item_tag_text"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textColor="@color/colorWhite"
+        android:text="asdf"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        app:layout_constraintStart_toEndOf="@id/mytrip_item_tag"
+        android:layout_width="8dp"
+        android:layout_height="22dp"/>
+
+
+</android.support.constraint.ConstraintLayout>
