@@ -18,7 +18,7 @@ class MyTripActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        val sampledata_tag = ArrayList<String>().apply {
+/*        val sampledata_tag = ArrayList<String>().apply {
             add("Food")
             add("Instagram")
             add("Rainbow")
@@ -33,7 +33,7 @@ class MyTripActivity : AppCompatActivity() {
 
         val adapter_list = MyTripListAdapter(sampledata_list, this)
 
-        mytrip_recycler.adapter = adapter_list
+        mytrip_recycler.adapter = adapter_list*/
 
 
     }

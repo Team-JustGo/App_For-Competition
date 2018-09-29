@@ -23,6 +23,7 @@ class MainViewModel : DisposableViewModel() {
     val selectedSubjectDeletedEvent = SingleLiveEvent<Int>()
     private val _lat = MutableLiveData<Double>().apply { value = 0.0 }
     private val _lng = MutableLiveData<Double>().apply { value = 0.0 }
+    private val _trans = MutableLiveData<Int>().apply { value = 0 }
 
 
     val selectedFragment: LiveData<Int> get() = _selectedFragment
@@ -33,6 +34,7 @@ class MainViewModel : DisposableViewModel() {
     val getTravelListEvent: LiveData<Any> get() = _getTravelListEvent
     val lat: LiveData<Double> get() = _lat
     val lng: LiveData<Double> get() = _lng
+    val trans: LiveData<Int> get() = _trans
 
     fun changeSelectedItem(value: Int) {
         _selectedFragment.value = value
@@ -67,6 +69,10 @@ class MainViewModel : DisposableViewModel() {
 
     fun setLng(value: Double) {
         _lng.value = value
+    }
+
+    fun changeTrans(value: Int) {
+        _trans.value = value
     }
 
 //    val getStatusName = when (selectedFragment.value) {

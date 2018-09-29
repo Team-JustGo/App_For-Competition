@@ -21,6 +21,7 @@
             android:layout_marginEnd="4dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:onClick="@{() -> mainViewModel.changeTrans(1)}"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/setTrans_car_cv"
             app:layout_constraintHorizontal_bias="0.5"
@@ -67,6 +68,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
+            android:onClick="@{() -> mainViewModel.changeTrans(0)}"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -111,11 +113,11 @@
             android:id="@+id/setTrans_walk_cv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="4dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:onClick="@{() -> mainViewModel.changeTrans(2)}"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/setTrans_selected_cv"
+            app:layout_constraintEnd_toEndOf="@+id/setTrans_publicTrans_cv"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/setTrans_publicTrans_cv">
@@ -151,49 +153,7 @@
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/setTrans_selected_cv"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/setTrans_walk_cv"
-            app:layout_constraintTop_toBottomOf="@+id/setTrans_car_cv">
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/setTrans_selected_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:src="@drawable/ic_car_64px"
-                    app:layout_constraintBottom_toTopOf="@+id/setTrans_selected_tv"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_chainStyle="packed" />
-
-                <TextView
-                    android:id="@+id/setTrans_selected_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="Drive"
-                    android:textColor="#A000"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/setTrans_selected_img" />
-
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.CardView>
 
 
         <Button

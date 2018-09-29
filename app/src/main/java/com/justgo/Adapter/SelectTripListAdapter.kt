@@ -21,16 +21,17 @@ import org.jetbrains.anko.textColor
 import org.jetbrains.anko.textColorResource
 import org.jetbrains.anko.toast
 
-class SelectTripListAdapter(val items : ArrayList<MyTripItem>, val ItemClick : ItemClickMethod, val context : Context)
+class SelectTripListAdapter(val items: ArrayList<MyTripItem>, val ItemClick: ItemClickMethod, val context: Context)
     : RecyclerView.Adapter<SelectTripListAdapter.SelectTripViewHolder>() {
 
+    var transType = 0
 
     companion object {
         var select_item_flag = false
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectTripViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_mytrip,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_mytrip, parent, false)
         return SelectTripViewHolder(view)
     }
 
@@ -38,22 +39,24 @@ class SelectTripListAdapter(val items : ArrayList<MyTripItem>, val ItemClick : I
         holder.select_title.text = items[position].title
         holder.select_howfar.text = items[position].howfar
 
-        with(holder.taglist){
+        with(holder.taglist) {
             adapter = MyTripTagAdapter(items[position].tagItem)
             layoutManager = holder.lm
         }
 
         holder.slelect_item.setOnClickListener {
-            if(!select_item_flag){
+            if (!select_item_flag) {
 //                ItemClick.onClick()
-                val intent = Intent(context,SelectDoneActivity::class.java)
+                val intent = Intent(context, SelectDoneActivity::class.java)
+                intent.putExtra("placeId", items[position].placeId)
+                intent.putExtra("transType", transType)
                 context.startActivity(intent)
 
                 select_item_flag = true
-                holder.View.backgroundResource = R.drawable.back_v_round_shape_select_trip
+                /*holder.View.backgroundResource = R.drawable.back_v_round_shape_select_trip
                 holder.select_title.textColorResource = R.color.colorWhite
                 holder.select_howfar.textColorResource = R.color.colorArriveBack
-                holder.taglist.bringToFront()
+                holder.taglist.bringToFront()*/
 
             } else {
 //                ItemClick.onClick()
@@ -67,7 +70,7 @@ class SelectTripListAdapter(val items : ArrayList<MyTripItem>, val ItemClick : I
 
     override fun getItemCount(): Int = items.size
 
-    inner class SelectTripViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    inner class SelectTripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val lm = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         val select_title = itemView.findViewById<TextView>(R.id.mytrip_item_title)

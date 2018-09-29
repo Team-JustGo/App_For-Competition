@@ -16,11 +16,11 @@ import kotlin.math.roundToInt
 
 class SelectTripActivity : AppCompatActivity(), ItemClickMethod {
     override fun onClick() {
-        if (!SelectTripListAdapter.select_item_flag) {
-            select_trip_btn.visibility = View.VISIBLE
-        } else {
-            select_trip_btn.visibility = View.GONE
-        }
+        /*    if (!SelectTripListAdapter.select_item_flag) {
+                select_trip_btn.visibility = View.VISIBLE
+            } else {
+                select_trip_btn.visibility = View.GONE
+            }*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,16 +36,18 @@ class SelectTripActivity : AppCompatActivity(), ItemClickMethod {
         val theme = intent.getStringExtra("theme")
         val minDistance = intent.getIntExtra("minDistance", 0)
         val maxDistance = intent.getIntExtra("maxDistance", 0)
+        val transType = intent.getIntExtra("transType", 0)
 
         val data = arrayListOf<MyTripItem>()
         getTourList(lat, lng, theme, minDistance, maxDistance) {
             onSuccess = {
                 var index = 1
                 body()!!.list.forEach {
-                    data.add(MyTripItem("Select ${(64 + index).toChar()}", "${it.distance.roundToInt().toDouble() / 1000} Km", it.theme.split(",") as ArrayList<String>))
+                    data.add(MyTripItem("Select ${(64 + index).toChar()}", "${it.distance.roundToInt().toDouble() / 1000} Km", it.theme.split(",") as ArrayList<String>, it.placeId))
                     index++
                 }
                 val adapter_list = SelectTripListAdapter(data, this@SelectTripActivity, this@SelectTripActivity)
+                adapter_list.transType = transType
                 select_trip_recycler.adapter = adapter_list
             }
             onFailure = {

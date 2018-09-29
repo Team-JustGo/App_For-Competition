@@ -13,7 +13,7 @@ import retrofit2.http.Query
 
 val api = Connecter.createApi()
 
-fun login(userId: String, name: String,model: ConnectModel<LoginResponseModel>.() -> Unit) = connectWIthModel(api.auth_user(userId, name), model)
+fun login(userId: String, name: String, model: ConnectModel<LoginResponseModel>.() -> Unit) = connectWIthModel(api.auth_user(userId, name), model)
 
 //fun login(userId: String, name: String, picture: MultipartBody.Part, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.login(userId, name, picture), model)
 fun main(token: String, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.main(token), model)
@@ -39,3 +39,4 @@ fun <T> connectWIthModel(connect: Call<T>, model: ConnectModel<T>.() -> Unit) {
         }
 
     })
+}
