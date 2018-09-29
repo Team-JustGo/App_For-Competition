@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.justgo.R
-import com.justgo.ui.Arrive.ArriveItem
+import com.justgo.Model.ArriveItem
 
 class ArriveFoodListAdapter(val items: ArrayList<ArriveItem>, val context : Context) : RecyclerView.Adapter<ArriveFoodListAdapter.ArriveCustomViewHolder>() {
 

@@ -13,28 +13,29 @@ import com.justgo.Adapter.ArriveInfoReviewAdapter
 import com.justgo.Adapter.MyTripTagAdapter
 import com.justgo.Connecter.getTourInfo
 import com.justgo.Model.ReviewItem
+import com.justgo.Model.ArriveItem
+import com.justgo.Model.MyTripTagItem
 import com.justgo.R
-import com.justgo.ui.MyTrip.MyTripTagItem
 
-class ArriveInfoFragment() : Fragment(){
+class ArriveInfoFragment() : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootview = inflater.inflate(R.layout.fragment_arrive_info, container, false)
 
         var image = rootview.findViewById<ImageView>(R.id.arrive_info_picture)
-        var theme : ArrayList<MyTripTagItem> = arrayListOf()
-        val comments : ArrayList<ReviewItem> = arrayListOf()
+        var theme: ArrayList<String> = arrayListOf()
+        val comments: ArrayList<ReviewItem> = arrayListOf()
 
 
-        getTourInfo("ChIJ45fXsE1IZTURoogpKhRsxuY"){
+        getTourInfo("ChIJ45fXsE1IZTURoogpKhRsxuY") {
             onSuccess = {
                 Glide.with(activity!!).load(body()!!.image).into(image)
 
                 body()!!.theme.split(',').forEach {
-                    theme.add(MyTripTagItem(it))
+                    theme.add(it)
                 }
 
                 body()!!.comment.forEach {
-                    comments.add(ReviewItem(it.rate.toString(),it.content))
+                    comments.add(ReviewItem(it.rate.toString(), it.content))
                 }
             }
 
@@ -42,7 +43,6 @@ class ArriveInfoFragment() : Fragment(){
 
             }
         }
-
 
 
         val adapter = MyTripTagAdapter(theme)
@@ -55,17 +55,16 @@ class ArriveInfoFragment() : Fragment(){
 
         reviewlist.adapter = adapter2
 
-        reviewlist.layoutManager = object : LinearLayoutManager(activity){
+        reviewlist.layoutManager = object : LinearLayoutManager(activity) {
             override fun canScrollVertically(): Boolean {
                 return false
             }
         }
 
-        with(taglist){
+        with(taglist) {
             this.adapter = adapter
-            this.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
+            this.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
-
 
         return rootview
     }

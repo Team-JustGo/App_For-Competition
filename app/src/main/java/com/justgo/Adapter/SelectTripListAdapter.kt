@@ -10,9 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.justgo.Model.MyTripItem
+import com.justgo.Model.MyTripTagItem
 import com.justgo.R
-import com.justgo.ui.MyTrip.MyTripItem
-import com.justgo.ui.MyTrip.MyTripTagItem
 import com.justgo.ui.SelectDone.SelectDoneActivity
 import com.justgo.ui.SelectTrip.ItemClickMethod
 import com.justgo.ui.SelectTrip.SelectTripActivity
@@ -21,7 +21,7 @@ import org.jetbrains.anko.textColor
 import org.jetbrains.anko.textColorResource
 import org.jetbrains.anko.toast
 
-class SelectTripListAdapter(val items : ArrayList<MyTripItem>, val tags : ArrayList<MyTripTagItem>, val ItemClick : ItemClickMethod, val context : Context)
+class SelectTripListAdapter(val items : ArrayList<MyTripItem>, val ItemClick : ItemClickMethod, val context : Context)
     : RecyclerView.Adapter<SelectTripListAdapter.SelectTripViewHolder>() {
 
 
@@ -39,7 +39,7 @@ class SelectTripListAdapter(val items : ArrayList<MyTripItem>, val tags : ArrayL
         holder.select_howfar.text = items[position].howfar
 
         with(holder.taglist){
-            adapter = holder.adapter
+            adapter = MyTripTagAdapter(items[position].tagItem)
             layoutManager = holder.lm
         }
 
@@ -68,7 +68,6 @@ class SelectTripListAdapter(val items : ArrayList<MyTripItem>, val tags : ArrayL
     override fun getItemCount(): Int = items.size
 
     inner class SelectTripViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val adapter = MyTripTagAdapter(tags)
         val lm = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         val select_title = itemView.findViewById<TextView>(R.id.mytrip_item_title)

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.justgo.Adapter.ArriveFoodListAdapter
 import com.justgo.Adapter.ArriveNearListAdapter
 import com.justgo.Connecter.getTourInfo
+import com.justgo.Model.ArriveItem
 import com.justgo.R
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -36,6 +37,11 @@ class ArriveFoodFragment : Fragment(),AnkoLogger {
         }
 
         val adapter = ArriveFoodListAdapter(data,activity!!)
+        val sampledata = ArrayList<ArriveItem>().apply {
+            for (i in 1..9)
+                add(ArriveItem("", "Food", "subtitle"))
+        }
+
 
         val foodlist = rootview.findViewById<RecyclerView>(R.id.arrive_food_recycler)
         foodlist.adapter = adapter

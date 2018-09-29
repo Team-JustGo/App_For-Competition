@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="com.justgo.ui.main.MainViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/main_backdrop_up_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_arrow_up_24px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/main_backdrop_first"
+            style="@style/backdropTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="19dp"
+            android:onClick="@{() -> mainViewModel.changeSelectedItem(1)}"
+            android:text="Set Location"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() &lt; 2 ? @android:color/white : @color/colorSemiTransparent }"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/main_backdrop_second"
+            style="@style/backdropTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainViewModel.changeSelectedItem(2)}"
+            android:text="Set transportation"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() == 2 ? @android:color/white : @color/colorSemiTransparent }"
+            app:layout_constraintStart_toStartOf="@+id/main_backdrop_first"
+            app:layout_constraintTop_toBottomOf="@+id/main_backdrop_first" />
+
+        <TextView
+            android:id="@+id/main_backdrop_third"
+            style="@style/backdropTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainViewModel.changeSelectedItem(3)}"
+            android:text="Travel subject"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() == 3 ? @android:color/white : @color/colorSemiTransparent }"
+            app:layout_constraintStart_toStartOf="@+id/main_backdrop_second"
+            app:layout_constraintTop_toBottomOf="@+id/main_backdrop_second" />
+
+        <TextView
+            android:id="@+id/main_backdrop_fourth"
+            style="@style/backdropTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> mainViewModel.changeSelectedItem(4)}"
+            android:text="Time limit"
+            android:textColor="@{mainViewModel.selectedFragment.getValue() == 4 ? @android:color/white : @color/colorSemiTransparent }"
+            app:layout_constraintStart_toStartOf="@+id/main_backdrop_third"
+            app:layout_constraintTop_toBottomOf="@+id/main_backdrop_third" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

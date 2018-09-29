@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.justgo.Adapter.ArriveNearListAdapter
 import com.justgo.Connecter.getTourInfo
+import com.justgo.Model.ArriveItem
 import com.justgo.R
 
 

@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.justgo.Model.ArriveItem
 import com.justgo.R
-import com.justgo.ui.Arrive.ArriveItem
 
 class ArriveNearListAdapter(val items: ArrayList<ArriveItem>, val context : Context) : RecyclerView.Adapter<ArriveNearListAdapter.ArriveCustomViewHolder>() {
 
