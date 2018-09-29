@@ -14,8 +14,9 @@ interface API {
     fun post_user(@Field("userId") userId: String): Call<LoginResponseModel>
 
     @POST("user/login")
+    @Multipart
     @FormUrlEncoded
-    fun auth_user(@Field("userId") userId: String, @Field("name") name: String): Call<LoginResponseModel>
+    fun auth_user(@Field("user") userId: String, @Field("name") name: String): Call<LoginResponseModel>
 
     @POST("user/main")
     fun main(@Header("X-Access-Token") token: String): Call<Void>

@@ -64,7 +64,7 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
                     }
                 });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name");
+        parameters.putString("fields", "id,name,image");
         graphRequest.setParameters(parameters);
         graphRequest.executeAsync();
     }
@@ -74,7 +74,7 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
         final API retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-52-79-240-33.ap-northeast-2.compute.amazonaws.com/api/")
+                .baseUrl("http://ec2-52-79-240-33.ap-northeast-2.compute.amazonaws.com:7777/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
@@ -93,12 +93,12 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
                     retrofit.auth_user(uid, name).enqueue(new Callback<LoginResponseModel>() {
                         @Override
                         public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
-                            Log.e("전송성공", "ok");
+                            Log.d("전송성공", "ok");
                         }
 
                         @Override
                         public void onFailure(Call<LoginResponseModel> call, Throwable t) {
-                            Log.e("전송성공", "fail");
+                            Log.d("전송성공", "fail");
                         }
                     });
                 }

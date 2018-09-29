@@ -28,7 +28,6 @@ String nickname;
     @Override
     public void onSessionOpened() {
         requestMe();
-        post();
     }
     // 로그인 실패
     @Override
@@ -55,8 +54,12 @@ String nickname;
                 Log.e("SessionCallback :: ", "onSuccess");
                 nickname = userProfile.getNickname();
                 uid= userProfile.getUUID();
+                Intent intent=new Intent(String.valueOf(this));
+                intent.putExtra("nickname",nickname);
+                intent.putExtra("uuid",uid);
                 Log.e("Profile : ", nickname + "");
                 Log.e("Profile : ", uid + "");
+                post();
             }
             // 사용자 정보 요청 실패
             @Override
@@ -69,14 +72,14 @@ String nickname;
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-        final API kakao = new Retrofit.Builder()
-                .baseUrl("http://ec2-52-79-240-33.ap-northeast-2.compute.amazonaws.com/api/")
+        final API retrofit = new Retrofit.Builder()
+                .baseUrl("http://ec2-52-79-240-33.ap-northeast-2.compute.amazonaws.com:7777/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
                 .create(API.class);
 
-        Call<LoginResponseModel> call = kakao.post_user(uid);
+        Call<LoginResponseModel> call = retrofit.post_user(uid);
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
@@ -86,15 +89,15 @@ String nickname;
                 LoginResponseModel repo = response.body();
                 Log.e("repo", "val" + repo);
                 if (response.code() == 418) {
-                    kakao.auth_user(uid, nickname).enqueue(new Callback<LoginResponseModel>() {
+                    retrofit.auth_user(uid, nickname).enqueue(new Callback<LoginResponseModel>() {
                         @Override
                         public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
-                            Log.d("전송성공", "ok");
+
                         }
 
                         @Override
                         public void onFailure(Call<LoginResponseModel> call, Throwable t) {
-                            Log.e("전송성공", "fail");
+
                         }
                     });
                 }
