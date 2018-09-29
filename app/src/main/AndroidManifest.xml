@@ -3,6 +3,10 @@
     package="com.justgo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".Util.GlobalApplication"
         android:allowBackup="true"
@@ -18,10 +22,13 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_key" />
         <meta-data
-            android:name="com.google.geo.API_KEY"
+            android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA_noKNA94FfLwxU52FtyeSPcQ0gE3Mkzs" />
 
-        <activity android:name=".ui.login.LoginActivity" >
+        <activity android:name=".ui.login.LoginActivity" />
+
+        <activity android:name=".ui.Arrive.ArriveActivity" />
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +36,18 @@
             </intent-filter>
         </activity>
 
-            <activity android:name=".ui.SplashActivity"/>
+
+        <activity android:name=".ui.MyTrip.MyTripActivity">
+
+        </activity>
+        <activity android:name=".ui.main.MainActivity" />
+
+        <activity android:name=".ui.SelectTrip.SelectTripActivity">
+
+        </activity>
+
+        <activity android:name=".ui.SelectDone.SelectDoneActivity" />
+
     </application>
 
 </manifest>

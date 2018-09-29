@@ -34,7 +34,7 @@ interface API {
     fun saveTourSpot(@Header("X-Access-Token") token: String, @Field("tourId") tourId: String): Call<Void>
 
     @GET("travel/tour-list")
-    fun getTourList(@QueryMap query: Map<String, Any>): Call<TourListModel>
+    fun getTourList(@Query("lat") lat: Double, @Query("lng") lng: Double, @Query("theme") theme: String, @Query("minDistance") min: Int, @Query("maxDistance") max: Int ): Call<TourListModel>
 
     @GET("travel/{id}/tour-info")
     fun getTourInfo(@Path("id") id: String): Call<TourInfoModel>
