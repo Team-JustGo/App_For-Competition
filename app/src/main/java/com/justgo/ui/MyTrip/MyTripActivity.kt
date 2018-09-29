@@ -18,24 +18,22 @@ class MyTripActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-
+/*        val sampledata_tag = ArrayList<String>().apply {
+            add("Food")
+            add("Instagram")
+            add("Rainbow")
+            add("Six Siege")
+        }
         val sampledata_list = ArrayList<MyTripItem>().apply {
             for (i in 1..10)
-                add(MyTripItem("Select " + (64 + i).toChar(), "44km, 30min"))
-        }
-
-        val sampledata_tag = ArrayList<MyTripTagItem>().apply {
-            add(MyTripTagItem("Food"))
-            add(MyTripTagItem("Instagram"))
-            add(MyTripTagItem("Rainbow"))
-            add(MyTripTagItem("Six Siege"))
+                add(MyTripItem("Select " + (64 + i).toChar(), "44km, 30min", sampledata_tag))
         }
 
         val lm = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        val adapter_list = MyTripListAdapter(sampledata_list, sampledata_tag, this)
+        val adapter_list = MyTripListAdapter(sampledata_list, this)
 
-        mytrip_recycler.adapter = adapter_list
+        mytrip_recycler.adapter = adapter_list*/
 
 
     }

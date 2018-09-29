@@ -1,15 +1,17 @@
 package com.justgo.Adapter
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.justgo.R
+import com.bumptech.glide.Glide
 import com.justgo.Model.ArriveItem
+import com.justgo.R
 
-class ArriveListAdapter(val items: ArrayList<ArriveItem>) : RecyclerView.Adapter<ArriveListAdapter.ArriveCustomViewHolder>() {
+class ArriveNearListAdapter(val items: ArrayList<ArriveItem>, val context : Context) : RecyclerView.Adapter<ArriveNearListAdapter.ArriveCustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArriveCustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_arrive, parent, false)
@@ -17,6 +19,7 @@ class ArriveListAdapter(val items: ArrayList<ArriveItem>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ArriveCustomViewHolder, position: Int) {
+        Glide.with(context).load(items[position].arrive_imgurl).into(holder.arrive_img)
         holder.arrive_title.text = items[position].arrive_title
         holder.arrive_subtitle.text = items[position].arrive_subtitle
     }

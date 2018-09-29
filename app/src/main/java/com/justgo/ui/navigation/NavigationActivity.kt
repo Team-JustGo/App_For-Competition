@@ -33,7 +33,7 @@ class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
         if (ContextCompat.checkSelfPermission(baseContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED)
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10F, object : LocationListener {
                 override fun onLocationChanged(p0: Location?) {
-                    
+
                 }
 
                 override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {

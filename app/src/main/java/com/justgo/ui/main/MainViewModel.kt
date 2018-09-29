@@ -14,8 +14,8 @@ class MainViewModel : DisposableViewModel() {
     private val _selectedSubject = MutableLiveData<ArrayList<String>>().apply { value = arrayListOf() }
     val selectedSubjectList = arrayListOf<String>()
     private val _selectableSubject = MutableLiveData<ArrayList<String>>()
-            .apply { value = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "서점", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰") }
-    val selectableSubjectList = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "서점", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰")
+            .apply { value = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰") }
+    val selectableSubjectList = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰")
     private val _minRange = MutableLiveData<Int>().apply { value = 0 }
     private val _maxRange = MutableLiveData<Int>().apply { value = 50 }
     private val _getTravelListEvent = SingleLiveEvent<Any>()
@@ -23,6 +23,7 @@ class MainViewModel : DisposableViewModel() {
     val selectedSubjectDeletedEvent = SingleLiveEvent<Int>()
     private val _lat = MutableLiveData<Double>().apply { value = 0.0 }
     private val _lng = MutableLiveData<Double>().apply { value = 0.0 }
+    private val _trans = MutableLiveData<Int>().apply { value = 0 }
 
 
     val selectedFragment: LiveData<Int> get() = _selectedFragment
@@ -33,6 +34,7 @@ class MainViewModel : DisposableViewModel() {
     val getTravelListEvent: LiveData<Any> get() = _getTravelListEvent
     val lat: LiveData<Double> get() = _lat
     val lng: LiveData<Double> get() = _lng
+    val trans: LiveData<Int> get() = _trans
 
     fun changeSelectedItem(value: Int) {
         _selectedFragment.value = value
@@ -67,6 +69,10 @@ class MainViewModel : DisposableViewModel() {
 
     fun setLng(value: Double) {
         _lng.value = value
+    }
+
+    fun changeTrans(value: Int) {
+        _trans.value = value
     }
 
 //    val getStatusName = when (selectedFragment.value) {
