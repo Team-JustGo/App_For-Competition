@@ -1,5 +1,6 @@
 package com.justgo.Connecter
 
+import com.justgo.Model.LoginResponseModel
 import com.justgo.Model.TourInfoModel
 import com.justgo.Model.TourListModel
 import okhttp3.MultipartBody
@@ -11,7 +12,7 @@ import retrofit2.http.Part
 
 val api = Connecter.createApi()
 
-fun login(userId: String, name: String, picture: MultipartBody.Part, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.login(userId, name, picture), model)
+fun login(userId: String, name: String,model: ConnectModel<LoginResponseModel>.() -> Unit) = connectWIthModel(api.auth_user(userId, name), model)
 fun main(token: String, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.main(token), model)
 fun changeImage(token: String, image: MultipartBody.Part, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.changeImage(token, image), model)
 fun changeName(token: String, profileName: String, model: ConnectModel<Void>.() -> Unit) = connectWIthModel(api.changeName(token, profileName), model)
