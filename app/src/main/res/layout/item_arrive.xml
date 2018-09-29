@@ -16,8 +16,7 @@
         <ImageView
             android:id="@+id/arrive_item_img"
             android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:background="@drawable/back_img_round_shape_arrive" />
+            android:layout_height="64dp" />
 
         <TextView
             android:id="@+id/arrive_item_title"

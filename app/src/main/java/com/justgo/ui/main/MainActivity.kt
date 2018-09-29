@@ -2,6 +2,7 @@ package com.justgo.ui.main
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.constraint.ConstraintLayout
@@ -13,9 +14,12 @@ import com.justgo.Connecter.getTourList
 import com.justgo.R
 import com.justgo.Util.DataBindingActivity
 import com.justgo.databinding.ActivityMainBinding
+import com.justgo.ui.MyTrip.MyTripActivity
+import com.justgo.ui.SelectTrip.SelectTripActivity
 import com.justgo.ui.SplashActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_backdrop.*
+import kotlinx.android.synthetic.main.main_profile.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -72,6 +76,9 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
             isBackdropOpened = false
         }
 
+        main_myTrips_tv.onClick {
+            startActivity(Intent(this@MainActivity, MyTripActivity::class.java))
+        }
         viewModel.selectedFragment.observe(this, Observer {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
 
@@ -106,7 +113,14 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 5 -> {
-                    viewModel.getTourList()
+                    val intent = Intent(this@MainActivity, SelectTripActivity::class.java)
+                    intent.putExtra("lat", viewModel.lat.value)
+                    intent.putExtra("lng", viewModel.lng.value)
+                    intent.putExtra("theme", viewModel.generateSubject())
+                    intent.putExtra("minDistance", viewModel.minRange.value!!.times(1000))
+                    intent.putExtra("maxDistance", viewModel.maxRange.value!!.times(1000))
+                    startActivity(intent)
+//                    viewModel.getTourList()
                 }
             }
         })

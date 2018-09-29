@@ -14,8 +14,8 @@ class MainViewModel : DisposableViewModel() {
     private val _selectedSubject = MutableLiveData<ArrayList<String>>().apply { value = arrayListOf() }
     val selectedSubjectList = arrayListOf<String>()
     private val _selectableSubject = MutableLiveData<ArrayList<String>>()
-            .apply { value = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "서점", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰") }
-    val selectableSubjectList = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "서점", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰")
+            .apply { value = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰") }
+    val selectableSubjectList = arrayListOf("놀이공원 및 오락시설", "서점", "아트 갤러리", "백화점", "박물관", "공원", "동물원", "옷가게", "영화관", "쇼핑몰")
     private val _minRange = MutableLiveData<Int>().apply { value = 0 }
     private val _maxRange = MutableLiveData<Int>().apply { value = 50 }
     private val _getTravelListEvent = SingleLiveEvent<Any>()
