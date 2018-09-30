@@ -19,8 +19,8 @@ class SelectDoneActivity : AppCompatActivity() {
         val desLat = intent.getDoubleExtra("desLat", 0.0)
         val desLng = intent.getDoubleExtra("desLng", 0.0)
         val transType = intent.getIntExtra("transType", 0)
-        val placeId = intent.getStringExtra("placeId")
-        Log.d("SelectDoneActivity", "placeId: $placeId")
+        val placeId = intent.getStringExtra("placeid")
+        Log.d("SelectDoneActivity", "placeid: $placeId")
         select_done_btn.setOnClickListener {
             val navigationIntent = Intent(this, NavigationActivity::class.java)
             with(navigationIntent) {
@@ -29,7 +29,7 @@ class SelectDoneActivity : AppCompatActivity() {
                 putExtra("desLat", desLat)
                 putExtra("desLng", desLng)
                 putExtra("transType", transType)
-                putExtra("placeId", placeId)
+                putExtra("placeid", placeId)
             }
             startActivity(navigationIntent)
             finish()

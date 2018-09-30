@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,8 @@ class SelectTripListAdapter(val items: ArrayList<MyTripItem>, val ItemClick: Ite
 
         holder.slelect_item.setOnClickListener {
             if (!select_item_flag) {
-                ItemClick.onClick(items[position].placeId, items[position].lat, items[position].lng)
+                Log.d("SelectTripListAdapter", "placeid: ${items[position].placeid}")
+                ItemClick.onClick(items[position].placeid, items[position].lat, items[position].lng)
 
 //                context.startActivity(intent)
 

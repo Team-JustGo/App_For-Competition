@@ -19,7 +19,7 @@ class ArriveNearByFragment : Fragment() {
         val data = ArrayList<ArriveItem>()
         val intent = activity!!.intent
 
-        getTourInfo(intent.getStringExtra("placeId")) {
+        getTourInfo(intent.getStringExtra("placeid")) {
             onSuccess = {
                 body()!!.nearSpot.forEach {
                     data.add(ArriveItem(it.image, it.title, it.address))

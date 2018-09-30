@@ -39,7 +39,7 @@ class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
         val desLat = intent.getDoubleExtra("desLat", 0.0)
         val desLng = intent.getDoubleExtra("desLng", 0.0)
         val transType = intent.getIntExtra("transType", 0)
-        val placeId = intent.getStringExtra("placeId")
+        val placeId = intent.getStringExtra("placeid")
         viewModel.getNavigation(transType.toString(), lat, lng, desLat, desLng)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.main_startTravel_mapView) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -54,7 +54,7 @@ class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
         viewModel.travelFinishEvent.observe(this, Observer {
             toast("Travel Is Finish!")
             val arriveIntent = Intent(this, ArriveActivity::class.java)
-            arriveIntent.putExtra("placeId", placeId)
+            arriveIntent.putExtra("placeid", placeId)
             startActivity(arriveIntent)
             finish()
         })

@@ -3,6 +3,7 @@ package com.justgo.ui.SelectTrip
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.justgo.Adapter.SelectTripListAdapter
 import com.justgo.Connecter.getTourList
 import com.justgo.Model.MyTripItem
@@ -20,7 +21,8 @@ class SelectTripActivity : AppCompatActivity(), ItemClickMethod {
             } else {
                 select_trip_btn.visibility = View.GONE
             }*/
-        doneIntent.putExtra("placeId", placeId)
+        Log.d("SelectTripActivity", "placeid: ${placeId}")
+        doneIntent.putExtra("placeid", placeId)
         doneIntent.putExtra("desLat", lat)
         doneIntent.putExtra("desLng", lng)
         startActivity(doneIntent)
@@ -53,7 +55,8 @@ class SelectTripActivity : AppCompatActivity(), ItemClickMethod {
             onSuccess = {
                 var index = 1
                 body()!!.list.forEach {
-                    data.add(MyTripItem("Select ${(64 + index).toChar()}", "${it.distance.roundToInt().toDouble() / 1000} Km", it.theme.split(",") as ArrayList<String>, it.placeId,it.lat,it.lng))
+                    Log.d("SelectTripActivity", "placeid: ${it.placeid}")
+                    data.add(MyTripItem("Select ${(64 + index).toChar()}", "${it.distance.roundToInt().toDouble() / 1000} Km", it.theme.split(",") as ArrayList<String>, it.placeid, it.lat, it.lng))
                     index++
                 }
                 val adapter_list = SelectTripListAdapter(data, this@SelectTripActivity, this@SelectTripActivity)

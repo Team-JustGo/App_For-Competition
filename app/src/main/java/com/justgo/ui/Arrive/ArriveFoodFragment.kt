@@ -22,7 +22,7 @@ class ArriveFoodFragment : Fragment(), AnkoLogger {
 
         val data = arrayListOf<ArriveItem>()
         val intent = activity!!.intent
-        getTourInfo(intent.getStringExtra("placeId")) {
+        getTourInfo(intent.getStringExtra("placeid")) {
             onSuccess = {
                 //                Log.d("ArriveFoodFragment","nearRestaurant: ${body()!!.nearRestaurant}")
                 info("${body()!!.nearRestaurant}")

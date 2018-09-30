@@ -27,7 +27,7 @@ class ArriveInfoFragment() : Fragment() {
         val intent = activity!!.intent
 
 
-        getTourInfo(intent.getStringExtra("placeId")) {
+        getTourInfo(intent.getStringExtra("placeid")) {
             onSuccess = {
                 Glide.with(activity!!).load(body()!!.image).into(image)
 

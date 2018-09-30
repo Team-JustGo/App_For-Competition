@@ -15,7 +15,7 @@ class ArriveActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_arrive)
         val intent = intent
-        val placeId = intent.getStringExtra("placeId")
+        val placeId = intent.getStringExtra("placeid")
 
         getTourInfo(placeId) {
             onSuccess = {
