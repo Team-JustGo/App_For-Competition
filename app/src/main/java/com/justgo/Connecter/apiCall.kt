@@ -1,5 +1,6 @@
 package com.justgo.Connecter
 
+import com.google.gson.JsonObject
 import com.justgo.Model.DirectionModel
 import com.justgo.Model.LoginResponseModel
 import com.justgo.Model.TourInfoModel
@@ -25,7 +26,7 @@ fun saveTourSpot(token: String, tourId: String, model: ConnectModel<Void>.() -> 
 fun getTourList(lat: Double, lng: Double, theme: String, min: Int, max: Int, model: ConnectModel<TourListModel>.() -> Unit) = connectWIthModel(api.getTourList(lat, lng, theme, min, max), model)
 fun getTourInfo(id: String, model: ConnectModel<TourInfoModel>.() -> Unit) = connectWIthModel(api.getTourInfo(id), model)
 fun getDirection(transport: String, lat: Double, lng: Double, desLat: Double, desLng: Double, model: ConnectModel<DirectionModel>.() -> Unit) = connectWIthModel(api.getDirection(transport, lat, lng, desLat, desLng), model)
-
+fun getProfile(header: String, model: ConnectModel<JsonObject>.() -> Unit) = connectWIthModel(api.getProfile(header), model)
 
 data class ConnectModel<T>(var onSuccess: (Response<T>.() -> Unit)? = null, var onFailure: (() -> Unit)? = null)
 

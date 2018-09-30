@@ -24,7 +24,7 @@ class NavigationViewModel : ViewModel() {
         getDirection(transport, lat, lng, desLat, desLng) {
             onSuccess = {
                 direction = body()!!.points
-                polyLine = body()!!.polyline
+                polyLine = body()!!.polyline.replace("\\", """\""")
                 polyLineEvent.call()
                 changeTextLiveEvent.call()
             }
@@ -34,7 +34,6 @@ class NavigationViewModel : ViewModel() {
     fun compareLocation(lat: Double, lng: Double) {
         val itr = direction.iterator()
         if (index < direction.size - 1) {
-            travelFinishEvent.call()
             Log.d("되냐?", "되네")
             val direction = direction[index + 1]
             direction.lat = String.format("%.5f", direction.lat).toDouble()

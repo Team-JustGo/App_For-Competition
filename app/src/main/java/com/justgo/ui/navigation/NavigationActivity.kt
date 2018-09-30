@@ -46,7 +46,7 @@ class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
         viewModel.changeTextLiveEvent.observe(this, Observer {
             Log.d("NavigationActivity", "성공")
             navigation_trans_location_tv.text = viewModel.direction[viewModel.index].instruction
-            navigation_tag_location_tv.text = viewModel.direction[viewModel.index + 1].let { "$lat, $lng" }
+            navigation_tag_location_tv.text = viewModel.direction[viewModel.index + 1].let { " With ${it.mode}" }
         })
 //        viewModel.locationIndex.observe(this , Observer {
 //            navigation_trans_location_tv.text = viewModel.direction[it!!].instruction
@@ -78,7 +78,7 @@ class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
 
         if (ContextCompat.checkSelfPermission(baseContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED) {
             map.isMyLocationEnabled = true
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10F, object : LocationListener {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 1F, object : LocationListener {
                 override fun onLocationChanged(location: Location) {
                     CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location.longitude), 17F).let {
                         map.animateCamera(it)

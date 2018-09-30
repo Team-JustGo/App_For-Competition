@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Bus"
+                    android:text="Transit"
                     android:textColor="#A000"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -152,8 +152,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/setTrans_walk_img" />
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
-
-
 
 
         <Button

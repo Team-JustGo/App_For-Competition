@@ -1,5 +1,6 @@
 package com.justgo.Connecter
 
+import com.google.gson.JsonObject
 import com.justgo.Model.DirectionModel
 import com.justgo.Model.LoginResponseModel
 import retrofit2.Call
@@ -43,4 +44,6 @@ interface API {
     @GET("travel/direction")
     fun getDirection(@Query("transport") transport: String, @Query("depLat") lat: Double, @Query("depLng") lng: Double, @Query("desLat") desLat: Double, @Query("desLng") desLng: Double): Call<DirectionModel>
 
+    @GET("user/profile")
+    fun getProfile(@Header("X-Access-Token") header: String): Call<JsonObject>
 }

@@ -45,26 +45,9 @@ class SetLocationFragment : DataBindingFragment<FragmentSetLocationBinding>(), O
         isMapCalled = true
 //        }
         binding.mainViewModel = viewModel
-        permissionCheck()
         if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED)
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 400, 1000F, this);
         return view
-    }
-
-    fun permissionCheck() {
-        val permissionlistener = object : PermissionListener {
-            override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
-            }
-
-            override fun onPermissionGranted() {
-            }
-        }
-
-        TedPermission.with(context)
-                .setPermissionListener(permissionlistener)
-                .setRationaleMessage("서비스를 이용하기 위해서 GPS 권한이 필요합니다.")
-                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
-                .check();
     }
 
     override fun onMapReady(map: GoogleMap) {

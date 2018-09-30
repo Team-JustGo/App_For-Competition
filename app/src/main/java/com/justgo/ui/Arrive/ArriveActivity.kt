@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import com.justgo.Adapter.ArriveViewPagerAdapter
 import com.justgo.Connecter.getTourInfo
+import com.justgo.Model.TourInfoModel
 import com.justgo.R
 import kotlinx.android.synthetic.main.activity_arrive.*
 
@@ -19,6 +20,8 @@ class ArriveActivity : AppCompatActivity() {
 
         getTourInfo(placeId) {
             onSuccess = {
+                val body = body()
+
                 arrive_area_tv?.text = body()!!.address
                 arrive_place_tv?.text = body()!!.name
             }

@@ -35,8 +35,8 @@
             android:id="@+id/main_profile_iv"
             android:layout_width="88dp"
             android:layout_height="88dp"
-            android:contentDescription="ProfileImage"
             android:background="@drawable/back_white_oval"
+            android:contentDescription="ProfileImage"
             app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
             app:layout_constraintTop_toTopOf="@+id/main_top_guideline" />
 
@@ -75,7 +75,7 @@
             style="@style/mainTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_secession"
+            android:text="Logout"
             app:layout_constraintStart_toStartOf="@+id/main_left_guideline"
             app:layout_constraintTop_toBottomOf="@+id/main_changeLanguage_tv" />
 

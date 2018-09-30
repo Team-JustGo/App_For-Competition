@@ -1,5 +1,7 @@
 package com.justgo.Util;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -12,6 +14,7 @@ import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.justgo.Connecter.API;
 import com.justgo.Model.LoginResponseModel;
+import com.justgo.ui.main.MainActivity;
 
 import org.json.JSONObject;
 
@@ -23,12 +26,20 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.justgo.Util.PrefManagerKt.saveToken;
+
 
 public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
     String uid;
     String name;
-
+    Context context;
     // 로그인 성공 시 호출 됩니다. Access Token 발급 성공.
+
+
+    public FacebookLoginCallBack(Context context) {
+        this.context = context;
+    }
+
     @Override
     public void onSuccess(LoginResult loginResult) {
         Log.d("getAccessToken()", String.valueOf(loginResult.getAccessToken()));
@@ -84,7 +95,6 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponseModel> call, @NonNull Response<LoginResponseModel> response) {
-                Log.e("KIMTAEYOUNGBUNGSIN", "val " + response.code());
 
                 Log.e("HI", "val" + response.toString());
                 LoginResponseModel repo = response.body();
@@ -94,6 +104,8 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
                         @Override
                         public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
                             Log.e("전송성공", "ok");
+                            context.startActivity(new Intent(context, MainActivity.class));
+                            saveToken(context, response.body().getJwt(), true);
                         }
 
                         @Override
@@ -101,6 +113,9 @@ public class FacebookLoginCallBack implements FacebookCallback<LoginResult> {
                             Log.e("전송성공", "fail");
                         }
                     });
+                } else {
+                    context.startActivity(new Intent(context, MainActivity.class));
+                    saveToken(context, response.body().getJwt(), true);
                 }
             }
 

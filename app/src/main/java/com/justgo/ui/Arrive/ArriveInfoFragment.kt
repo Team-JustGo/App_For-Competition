@@ -29,7 +29,7 @@ class ArriveInfoFragment() : Fragment() {
 
         getTourInfo(intent.getStringExtra("placeid")) {
             onSuccess = {
-                Glide.with(activity!!).load(body()!!.image).into(image)
+                Glide.with(context!!).load(body()!!.image).into(image)
 
                 body()!!.theme.split(',').forEach {
                     theme.add(it)

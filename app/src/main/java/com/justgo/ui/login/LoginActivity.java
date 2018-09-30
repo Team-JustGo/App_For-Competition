@@ -1,5 +1,6 @@
 package com.justgo.ui.login;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -15,34 +16,39 @@ import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 import com.justgo.R;
 import com.justgo.Util.FacebookLoginCallBack;
 import com.justgo.Util.SessionCallback;
+import com.justgo.ui.main.MainActivity;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
 
 import java.security.MessageDigest;
 import java.util.Arrays;
+import java.util.List;
+
+import static com.justgo.Util.PrefManagerKt.saveToken;
 
 public class LoginActivity extends AppCompatActivity {
     private FacebookLoginCallBack facebookLoginCallBack;
     private CallbackManager callbackManager;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getAppKeyHash();
         callbackManager = CallbackManager.Factory.create();
-        facebookLoginCallBack = new FacebookLoginCallBack();
-        LinearLayout layout_kakao_button=findViewById(R.id.login_kakaoLogin_btn);
-        LinearLayout layout_facebook_button=findViewById(R.id.login_fbLogin_btn);
+        facebookLoginCallBack = new FacebookLoginCallBack(this);
+        LinearLayout layout_kakao_button = findViewById(R.id.login_kakaoLogin_btn);
+        LinearLayout layout_facebook_button = findViewById(R.id.login_fbLogin_btn);
         layout_kakao_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("버튼터치","성공");
-                Session session = Session.getCurrentSession();
-                session.addCallback(new SessionCallback());
-                session.open(AuthType.KAKAO_LOGIN_ALL, LoginActivity.this);
+                startActivity(new Intent(getBaseContext(), MainActivity.class));
+                finish();
             }
         });
         layout_facebook_button.setOnClickListener(new View.OnClickListener() {
@@ -50,10 +56,28 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 LoginManager loginManager = LoginManager.getInstance();
                 loginManager.logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile", "email"));
-                loginManager.registerCallback(callbackManager,facebookLoginCallBack);
+                loginManager.registerCallback(callbackManager, facebookLoginCallBack);
             }
         });
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+
+            }
+        };
+        TedPermission.with(getBaseContext())
+                .setPermissionListener(permissionListener)
+                .setRationaleMessage("서비스를 이용하기 위해서 GPS 권한이 필요합니다.")
+                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
+                .check();
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);

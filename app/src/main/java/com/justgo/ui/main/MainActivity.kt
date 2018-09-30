@@ -10,9 +10,12 @@ import android.support.constraint.ConstraintSet
 import android.transition.Fade
 import android.transition.TransitionManager
 import android.view.animation.OvershootInterpolator
+import com.justgo.Connecter.getProfile
 import com.justgo.Connecter.getTourList
 import com.justgo.R
 import com.justgo.Util.DataBindingActivity
+import com.justgo.Util.getToken
+import com.justgo.Util.removeToken
 import com.justgo.databinding.ActivityMainBinding
 import com.justgo.ui.MyTrip.MyTripActivity
 import com.justgo.ui.SelectTrip.SelectTripActivity
@@ -49,6 +52,13 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
         viewModel.getTravelListEvent.observe(this, Observer {
             //            startActivity<SplashActivity>()
         })
+        if (getToken(baseContext, true) != "") {
+            getProfile(getToken(baseContext, true)) {
+                onSuccess = {
+                    main_name_tv.text = body()!!["profileName"].asString
+                }
+            }
+        }
         main_startTravel_header.onClick {
             if (!isTravelStart || isBackdropOpened) {
                 updateConstraints(R.layout.activity_main_travel, container)
@@ -74,6 +84,10 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
         main_backdrop_up_iv.onClick {
             updateConstraints(R.layout.activity_main_travel, container)
             isBackdropOpened = false
+        }
+        main_secession_tv.onClick {
+            removeToken(baseContext)
+            finish()
         }
 
         main_myTrips_tv.onClick {
@@ -107,10 +121,12 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
                     updateConstraints(R.layout.activity_main_travel, container)
                 }
                 4 -> {
-                    fragmentTransaction.replace(R.id.main_startTravel_fragment, setRangeFragment).commit()
-                    main_toolbar_tv.text = "Time limit"
-                    main_toolbar_progress_tv.text = "4 / 4"
-                    updateConstraints(R.layout.activity_main_travel, container)
+                    if (viewModel.selectedSubject.value != null) {
+                        fragmentTransaction.replace(R.id.main_startTravel_fragment, setRangeFragment).commit()
+                        main_toolbar_tv.text = "Time limit"
+                        main_toolbar_progress_tv.text = "4 / 4"
+                        updateConstraints(R.layout.activity_main_travel, container)
+                    }
                 }
                 5 -> {
                     val intent = Intent(this@MainActivity, SelectTripActivity::class.java)
