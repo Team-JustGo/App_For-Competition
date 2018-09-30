@@ -16,18 +16,18 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
 
-class ArriveFoodFragment : Fragment(),AnkoLogger {
+class ArriveFoodFragment : Fragment(), AnkoLogger {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootview = layoutInflater.inflate(R.layout.fragment_arrive_food, container,false)
+        val rootview = layoutInflater.inflate(R.layout.fragment_arrive_food, container, false)
 
         val data = arrayListOf<ArriveItem>()
-
-        getTourInfo("ChIJ45fXsE1IZTURoogpKhRsxuY"){
+        val intent = activity!!.intent
+        getTourInfo(intent.getStringExtra("placeId")) {
             onSuccess = {
-//                Log.d("ArriveFoodFragment","nearRestaurant: ${body()!!.nearRestaurant}")
+                //                Log.d("ArriveFoodFragment","nearRestaurant: ${body()!!.nearRestaurant}")
                 info("${body()!!.nearRestaurant}")
                 body()!!.nearRestaurant.forEach {
-                    data.add(ArriveItem(it.image,it.title,it.address))
+                    data.add(ArriveItem(it.image, it.title, it.address))
                 }
             }
 
@@ -36,7 +36,7 @@ class ArriveFoodFragment : Fragment(),AnkoLogger {
             }
         }
 
-        val adapter = ArriveFoodListAdapter(data,activity!!)
+        val adapter = ArriveFoodListAdapter(data, activity!!)
         val sampledata = ArrayList<ArriveItem>().apply {
             for (i in 1..9)
                 add(ArriveItem("", "Food", "subtitle"))

@@ -17,12 +17,12 @@ class ArriveNearByFragment : Fragment() {
         val rootview = inflater.inflate(R.layout.fragment_arrive_nearby, container, false)
 
         val data = ArrayList<ArriveItem>()
+        val intent = activity!!.intent
 
-
-        getTourInfo("ChIJ45fXsE1IZTURoogpKhRsxuY"){
+        getTourInfo(intent.getStringExtra("placeId")) {
             onSuccess = {
                 body()!!.nearSpot.forEach {
-                    data.add(ArriveItem(it.image,it.title,it.address))
+                    data.add(ArriveItem(it.image, it.title, it.address))
                 }
             }
 
@@ -32,7 +32,7 @@ class ArriveNearByFragment : Fragment() {
         }
 
 
-        val adapter = ArriveNearListAdapter(data,activity!!)
+        val adapter = ArriveNearListAdapter(data, activity!!)
 
         val nearbylist = rootview.findViewById<RecyclerView>(R.id.arrive_nearby_recycler)
         nearbylist.adapter = adapter

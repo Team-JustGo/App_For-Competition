@@ -14,8 +14,10 @@ class ArriveActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_arrive)
+        val intent = intent
+        val placeId = intent.getStringExtra("placeId")
 
-        getTourInfo("ChIJ45fXsE1IZTURoogpKhRsxuY"){
+        getTourInfo(placeId) {
             onSuccess = {
                 arrive_area_tv?.text = body()!!.address
                 arrive_place_tv?.text = body()!!.name

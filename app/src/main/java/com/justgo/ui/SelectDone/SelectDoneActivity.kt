@@ -3,6 +3,7 @@ package com.justgo.ui.SelectDone
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.justgo.R
 import com.justgo.ui.SelectTrip.SelectTripActivity
 import com.justgo.ui.navigation.NavigationActivity
@@ -19,6 +20,7 @@ class SelectDoneActivity : AppCompatActivity() {
         val desLng = intent.getDoubleExtra("desLng", 0.0)
         val transType = intent.getIntExtra("transType", 0)
         val placeId = intent.getStringExtra("placeId")
+        Log.d("SelectDoneActivity", "placeId: $placeId")
         select_done_btn.setOnClickListener {
             val navigationIntent = Intent(this, NavigationActivity::class.java)
             with(navigationIntent) {
