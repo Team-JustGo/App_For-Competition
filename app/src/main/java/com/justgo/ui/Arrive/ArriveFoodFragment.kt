@@ -22,6 +22,7 @@ class ArriveFoodFragment : Fragment(), AnkoLogger {
 
         val data = arrayListOf<ArriveItem>()
         val intent = activity!!.intent
+        val adapter = ArriveFoodListAdapter(data, context!!)
         getTourInfo(intent.getStringExtra("placeid")) {
             onSuccess = {
                 //                Log.d("ArriveFoodFragment","nearRestaurant: ${body()!!.nearRestaurant}")
@@ -29,6 +30,7 @@ class ArriveFoodFragment : Fragment(), AnkoLogger {
                 body()!!.nearRestaurant.forEach {
                     data.add(ArriveItem(it.image, it.title, it.address))
                 }
+                adapter.notifyDataSetChanged()
             }
 
             onFailure = {
@@ -36,12 +38,10 @@ class ArriveFoodFragment : Fragment(), AnkoLogger {
             }
         }
 
-        val adapter = ArriveFoodListAdapter(data, activity!!)
-        val sampledata = ArrayList<ArriveItem>().apply {
+        /*val sampledata = ArrayList<ArriveItem>().apply {
             for (i in 1..9)
                 add(ArriveItem("", "Food", "subtitle"))
-        }
-
+        }*/
 
         val foodlist = rootview.findViewById<RecyclerView>(R.id.arrive_food_recycler)
         foodlist.adapter = adapter
