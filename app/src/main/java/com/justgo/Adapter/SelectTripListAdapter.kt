@@ -1,7 +1,6 @@
 package com.justgo.Adapter
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.LinearLayoutManager
@@ -11,15 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.justgo.Model.MyTripItem
-import com.justgo.Model.MyTripTagItem
 import com.justgo.R
-import com.justgo.ui.SelectDone.SelectDoneActivity
 import com.justgo.ui.SelectTrip.ItemClickMethod
-import com.justgo.ui.SelectTrip.SelectTripActivity
 import org.jetbrains.anko.backgroundResource
 import org.jetbrains.anko.textColor
-import org.jetbrains.anko.textColorResource
-import org.jetbrains.anko.toast
 
 class SelectTripListAdapter(val items: ArrayList<MyTripItem>, val ItemClick: ItemClickMethod, val context: Context)
     : RecyclerView.Adapter<SelectTripListAdapter.SelectTripViewHolder>() {
@@ -46,11 +40,9 @@ class SelectTripListAdapter(val items: ArrayList<MyTripItem>, val ItemClick: Ite
 
         holder.slelect_item.setOnClickListener {
             if (!select_item_flag) {
-//                ItemClick.onClick()
-                val intent = Intent(context, SelectDoneActivity::class.java)
-                intent.putExtra("placeId", items[position].placeId)
-                intent.putExtra("transType", transType)
-                context.startActivity(intent)
+                ItemClick.onClick(items[position].placeId, items[position].lat, items[position].lng)
+
+//                context.startActivity(intent)
 
                 select_item_flag = true
                 /*holder.View.backgroundResource = R.drawable.back_v_round_shape_select_trip

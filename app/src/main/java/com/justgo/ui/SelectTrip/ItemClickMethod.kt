@@ -1,5 +1,5 @@
 package com.justgo.ui.SelectTrip
 
 interface ItemClickMethod {
-    fun onClick() : Unit
+    fun onClick(placeId: String, lat: Double, lng: Double)
 }

@@ -119,7 +119,7 @@ class MainActivity : DataBindingActivity<ActivityMainBinding>() {
                     intent.putExtra("theme", viewModel.generateSubject())
                     intent.putExtra("minDistance", viewModel.minRange.value!!.times(1000))
                     intent.putExtra("maxDistance", viewModel.maxRange.value!!.times(1000))
-                    intent.putExtra("transType", 0)
+                    intent.putExtra("transType", viewModel.trans.value)
                     startActivity(intent)
 //                    viewModel.getTourList()
                 }
