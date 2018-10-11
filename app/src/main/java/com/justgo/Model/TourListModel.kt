@@ -4,7 +4,7 @@ class TourListModel {
     var list: ArrayList<TourListItem> = arrayListOf()
 
     class TourListItem {
-        var placeId = ""
+        var placeid = ""
         var lat = 0.0
         var lng = 0.0
         var theme = ""

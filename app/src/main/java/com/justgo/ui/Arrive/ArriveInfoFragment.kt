@@ -24,11 +24,12 @@ class ArriveInfoFragment() : Fragment() {
         var image = rootview.findViewById<ImageView>(R.id.arrive_info_picture)
         var theme: ArrayList<String> = arrayListOf()
         val comments: ArrayList<ReviewItem> = arrayListOf()
+        val intent = activity!!.intent
 
 
-        getTourInfo("ChIJ45fXsE1IZTURoogpKhRsxuY") {
+        getTourInfo(intent.getStringExtra("placeid")) {
             onSuccess = {
-                Glide.with(activity!!).load(body()!!.image).into(image)
+                Glide.with(context!!).load(body()!!.image).into(image)
 
                 body()!!.theme.split(',').forEach {
                     theme.add(it)
