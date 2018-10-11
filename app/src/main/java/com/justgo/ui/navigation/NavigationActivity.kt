@@ -23,16 +23,20 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.android.PolyUtil
+import com.justgo.Util.DataBindingActivity
+import com.justgo.databinding.ActivityNavigationBinding
 import com.justgo.ui.Arrive.ArriveActivity
 import kotlinx.android.synthetic.main.activity_navigation.*
 import org.jetbrains.anko.toast
 
 
-class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
+class NavigationActivity : DataBindingActivity<ActivityNavigationBinding>(), OnMapReadyCallback {
+    override fun getLayoutId(): Int = R.layout.activity_navigation
+
     val viewModel by lazy { ViewModelProviders.of(this)[NavigationViewModel::class.java] }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_navigation)
+        binding.viewModel = viewModel
         val intent = intent
         val lat = intent.getDoubleExtra("lat", 0.0)
         val lng = intent.getDoubleExtra("lng", 0.0)
@@ -43,14 +47,6 @@ class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
         viewModel.getNavigation(transType.toString(), lat, lng, desLat, desLng)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.main_startTravel_mapView) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        viewModel.changeTextLiveEvent.observe(this, Observer {
-            Log.d("NavigationActivity", "성공")
-            navigation_trans_location_tv.text = viewModel.direction[viewModel.index].instruction
-            navigation_tag_location_tv.text = viewModel.direction[viewModel.index + 1].let { " With ${it.mode}" }
-        })
-//        viewModel.locationIndex.observe(this , Observer {
-//            navigation_trans_location_tv.text = viewModel.direction[it!!].instruction
-//        })
         viewModel.travelFinishEvent.observe(this, Observer {
             toast("Travel Is Finish!")
             val arriveIntent = Intent(this, ArriveActivity::class.java)
@@ -61,6 +57,7 @@ class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap) {
+
         map.uiSettings.isScrollGesturesEnabled = false
         map.uiSettings.isZoomGesturesEnabled = false
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -99,3 +96,4 @@ class NavigationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 }
+

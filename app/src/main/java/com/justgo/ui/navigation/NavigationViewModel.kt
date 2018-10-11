@@ -10,29 +10,30 @@ import com.justgo.Util.SingleLiveEvent
 import io.reactivex.Single
 
 class NavigationViewModel : ViewModel() {
-    val _locationModel = MutableLiveData<ArrayList<DirectionModel.Point>>().apply { value = arrayListOf(DirectionModel.Point("", 0.0, 0.0)) }
     var direction = ArrayList<DirectionModel.Point>()
-    val _locationIndex = MutableLiveData<Int>().apply { value = 0 }
     var index = 0
     val changeTextLiveEvent = SingleLiveEvent<Any>()
     val travelFinishEvent = SingleLiveEvent<Any>()
-    var polyLineEvent = SingleLiveEvent<String>()
+    val transit = MutableLiveData<String>()/*.apply { value = "" }*/
+    val type = MutableLiveData<String>()/*.apply { value = "" }*/
+    val polyLineEvent = SingleLiveEvent<String>()
     var polyLine = ""
-    val locationModel: LiveData<ArrayList<DirectionModel.Point>> get() = _locationModel
-    val locationIndex: LiveData<Int> get() = _locationIndex
+
     fun getNavigation(transport: String, lat: Double, lng: Double, desLat: Double, desLng: Double) {
         getDirection(transport, lat, lng, desLat, desLng) {
             onSuccess = {
                 direction = body()!!.points
                 polyLine = body()!!.polyline.replace("\\", """\""")
                 polyLineEvent.call()
-                changeTextLiveEvent.call()
+                transit.value = direction[index].instruction
+                type.value = direction[index + 1].let { " With ${it.mode}" }
+                /*changeTextLiveEvent.call()*/
             }
         }
+
     }
 
     fun compareLocation(lat: Double, lng: Double) {
-        val itr = direction.iterator()
         if (index < direction.size - 1) {
             Log.d("되냐?", "되네")
             val direction = direction[index + 1]
@@ -43,11 +44,10 @@ class NavigationViewModel : ViewModel() {
             Log.d("NavigationViewModel", "${direction.lat - 0.001}, ${direction.lng - 0.001} < ${lat.toFive()}  ${lng.toFive()} < ${direction.lat + 0.001}  ${direction.lng + 0.001}")
             if (direction.lat - 0.001 < lat.toFive() && lat.toFive() < direction.lat + 0.001) {
                 if (direction.lng - 0.001 < lng.toFive() && lng.toFive() < direction.lng + 0.001) {
-                    _locationIndex.postValue(_locationIndex.value!! + 1)
                     Log.d("NavigationViewModel", "Success")
-                    changeTextLiveEvent.call()
                     index++
-                    itr.next()
+                    transit.value = this.direction[index].instruction
+                    type.value = this.direction[index + 1].let { " With ${it.mode}" }
                 }
             }
         } else if (direction.size != 0) {
