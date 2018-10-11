@@ -3,10 +3,10 @@
 ### Adapter
 - RecyclerView Adapter, ViewPager Adapter 등 어댑터 코드를 넣습니다.
 ### Connecter
-- 통신을 위한 코드는 Connecter 패키지에 작성합니다.
+- 통신을 위한 코드는 `Connecter` 패키지에 작성합니다.
 - 서버 요청 url은 API interface에 작성합니다.
-- Connecter 파일은 건드리지 않습니다.
-- apiCall 에 코틀린용 서버 호출 코드를 작성해놓았습니다.
+- `Connecter` 파일은 건드리지 않습니다.
+- `apiCall` 에 코틀린용 서버 호출 코드를 작성해놓았습니다.
 - 다음과 같이 사용합니다.
 ```kotlin
 main("token"){
@@ -18,10 +18,10 @@ main("token"){
     }
 }
 ```
-- onSuccess는 Response<> 의 확장함수이기에, res.code() 가 아닌 code()처럼 Response<>의 메소드를 호출할 수 있습니다.
+- `onSuccess`는 `Response<>` 의 확장함수이기에, `res.code()` 가 아닌 `code()`처럼 `Response<>`의 메소드를 호출할 수 있습니다.
   
 ### Model
-- 데이터 모델은 Model 패키지에 넣습니다.
+- 데이터 모델은 `Model` 패키지에 넣습니다.
 ### ui
 - 액티비티마다 패키지를 만들고, 그 안에 액티비티, 프레젠터 등을 넣어 작업합니다.
 - Ex) main 패키지를 만든 후 MainActivity MainFragment 등 들어가야할 파일을 생성
