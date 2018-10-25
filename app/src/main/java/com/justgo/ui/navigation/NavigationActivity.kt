@@ -4,20 +4,17 @@ import android.Manifest
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.justgo.R
-import android.content.Context.LOCATION_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.support.v4.content.ContextCompat
-import android.util.Log
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -26,7 +23,6 @@ import com.google.maps.android.PolyUtil
 import com.justgo.Util.DataBindingActivity
 import com.justgo.databinding.ActivityNavigationBinding
 import com.justgo.ui.Arrive.ArriveActivity
-import kotlinx.android.synthetic.main.activity_navigation.*
 import org.jetbrains.anko.toast
 
 
@@ -47,6 +43,7 @@ class NavigationActivity : DataBindingActivity<ActivityNavigationBinding>(), OnM
         viewModel.getNavigation(transType.toString(), lat, lng, desLat, desLng)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.main_startTravel_mapView) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
         viewModel.travelFinishEvent.observe(this, Observer {
             toast("Travel Is Finish!")
             val arriveIntent = Intent(this, ArriveActivity::class.java)
@@ -62,12 +59,15 @@ class NavigationActivity : DataBindingActivity<ActivityNavigationBinding>(), OnM
         map.uiSettings.isZoomGesturesEnabled = false
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        viewModel.polyLineEvent.observe(this, Observer {
-            val d = PolyUtil.decode(viewModel.polyLine)
-            map.addPolyline(PolylineOptions().addAll(d)
+        viewModel.polyLine.observe(this, Observer {
+            val decoded = PolyUtil.decode(it)
+            map.addPolyline(PolylineOptions().addAll(decoded)
                     .width(5F))
-            viewModel.direction.forEach {
-                LatLng(it.lat, it.lng).let {
+        })
+
+        viewModel.direction.observe(this, Observer { direction ->
+            direction!!.forEach { point ->
+                LatLng(point.lat, point.lng).let {
                     map.addMarker(MarkerOptions().position(it))
                 }
             }

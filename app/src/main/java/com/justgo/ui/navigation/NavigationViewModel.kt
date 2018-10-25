@@ -7,26 +7,28 @@ import android.util.Log
 import com.justgo.Connecter.getDirection
 import com.justgo.Model.DirectionModel
 import com.justgo.Util.SingleLiveEvent
-import io.reactivex.Single
 
 class NavigationViewModel : ViewModel() {
-    var direction = ArrayList<DirectionModel.Point>()
-    var index = 0
-    val changeTextLiveEvent = SingleLiveEvent<Any>()
+    val _direction = MutableLiveData<ArrayList<DirectionModel.Point>>()
+    val _transit = MutableLiveData<String>()
+    val _type = MutableLiveData<String>()
+    val _polyLine = MutableLiveData<String>()
+
+    val direction get() = _direction as LiveData<ArrayList<DirectionModel.Point>>
     val travelFinishEvent = SingleLiveEvent<Any>()
-    val transit = MutableLiveData<String>()/*.apply { value = "" }*/
-    val type = MutableLiveData<String>()/*.apply { value = "" }*/
-    val polyLineEvent = SingleLiveEvent<String>()
-    var polyLine = ""
+    val transit get() = _transit as LiveData<String>
+    val type get() = _type as LiveData<String>
+    val polyLine get() = _polyLine as LiveData<String>
+    var index = 0
+
 
     fun getNavigation(transport: String, lat: Double, lng: Double, desLat: Double, desLng: Double) {
         getDirection(transport, lat, lng, desLat, desLng) {
             onSuccess = {
-                direction = body()!!.points
-                polyLine = body()!!.polyline.replace("\\", """\""")
-                polyLineEvent.call()
-                transit.value = direction[index].instruction
-                type.value = direction[index + 1].let { " With ${it.mode}" }
+                _direction.value = body()!!.points
+                _polyLine.value = body()!!.polyline.replace("\\", """\""")
+                _transit.value = _direction.value!![index].instruction
+                _type.value = _direction.value!![index + 1].let { " With ${it.mode}" }
                 /*changeTextLiveEvent.call()*/
             }
         }
@@ -34,24 +36,26 @@ class NavigationViewModel : ViewModel() {
     }
 
     fun compareLocation(lat: Double, lng: Double) {
-        if (index < direction.size - 1) {
-            Log.d("되냐?", "되네")
-            val direction = direction[index + 1]
-            direction.lat = String.format("%.5f", direction.lat).toDouble()
-            direction.lng = String.format("%.5f", direction.lng).toDouble()
+        direction.value?.let { directionLiveData ->
+            if (index < directionLiveData.size - 1) {
+                Log.d("되냐?", "되네")
+                val direction = directionLiveData[index + 1]
+                direction.lat = String.format("%.5f", direction.lat).toDouble()
+                direction.lng = String.format("%.5f", direction.lng).toDouble()
 
-            Log.d("NavigationViewModel", "in direction: ${direction.lat}  ${direction.lng}")
-            Log.d("NavigationViewModel", "${direction.lat - 0.001}, ${direction.lng - 0.001} < ${lat.toFive()}  ${lng.toFive()} < ${direction.lat + 0.001}  ${direction.lng + 0.001}")
-            if (direction.lat - 0.001 < lat.toFive() && lat.toFive() < direction.lat + 0.001) {
-                if (direction.lng - 0.001 < lng.toFive() && lng.toFive() < direction.lng + 0.001) {
-                    Log.d("NavigationViewModel", "Success")
-                    index++
-                    transit.value = this.direction[index].instruction
-                    type.value = this.direction[index + 1].let { " With ${it.mode}" }
+                Log.d("NavigationViewModel", "in _direction: ${direction.lat}  ${direction.lng}")
+                Log.d("NavigationViewModel", "${direction.lat - 0.001}, ${direction.lng - 0.001} < ${lat.toFive()}  ${lng.toFive()} < ${direction.lat + 0.001}  ${direction.lng + 0.001}")
+                if (direction.lat - 0.001 < lat.toFive() && lat.toFive() < direction.lat + 0.001) {
+                    if (direction.lng - 0.001 < lng.toFive() && lng.toFive() < direction.lng + 0.001) {
+                        Log.d("NavigationViewModel", "Success")
+                        index++
+                        _transit.value = directionLiveData[index].instruction
+                        _type.value = directionLiveData[index + 1].let { " With ${it.mode}" }
+                    }
                 }
+            } else if (directionLiveData.size != 0) {
+                travelFinishEvent.call()
             }
-        } else if (direction.size != 0) {
-            travelFinishEvent.call()
         }
     }
 
