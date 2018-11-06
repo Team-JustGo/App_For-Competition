@@ -1,11 +1,9 @@
 package com.justgo.ui.Arrive
 
 import android.os.Bundle
-import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
-import com.justgo.Adapter.ArriveViewPagerAdapter
-import com.justgo.Connecter.getTourInfo
-import com.justgo.Model.TourInfoModel
+import com.justgo.adapter.ArriveViewPagerAdapter
+import com.justgo.connecter.getTourInfo
 import com.justgo.R
 import kotlinx.android.synthetic.main.activity_arrive.*
 

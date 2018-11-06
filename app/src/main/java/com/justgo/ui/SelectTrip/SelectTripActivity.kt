@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.justgo.Adapter.SelectTripListAdapter
-import com.justgo.Connecter.getTourList
-import com.justgo.Model.MyTripItem
+import com.justgo.adapter.SelectTripListAdapter
+import com.justgo.connecter.getTourList
+import com.justgo.model.MyTripItem
 import com.justgo.R
 import com.justgo.ui.SelectDone.SelectDoneActivity
 import kotlinx.android.synthetic.main.activity_select_trip.*

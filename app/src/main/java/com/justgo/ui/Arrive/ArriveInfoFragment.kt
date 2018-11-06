@@ -9,12 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.justgo.Adapter.ArriveInfoReviewAdapter
-import com.justgo.Adapter.MyTripTagAdapter
-import com.justgo.Connecter.getTourInfo
-import com.justgo.Model.ReviewItem
-import com.justgo.Model.ArriveItem
-import com.justgo.Model.MyTripTagItem
+import com.justgo.adapter.ArriveInfoReviewAdapter
+import com.justgo.adapter.MyTripTagAdapter
+import com.justgo.connecter.getTourInfo
+import com.justgo.model.ReviewItem
 import com.justgo.R
 
 class ArriveInfoFragment() : Fragment() {

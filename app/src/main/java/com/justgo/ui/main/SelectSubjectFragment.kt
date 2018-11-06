@@ -5,23 +5,20 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration
-import com.justgo.Adapter.SelectSubjectAdapter
-import com.justgo.Adapter.SelectedSubjectAdapter
+import com.justgo.adapter.SelectSubjectAdapter
+import com.justgo.adapter.SelectedSubjectAdapter
 
 import com.justgo.R
-import com.justgo.Util.DataBindingFragment
+import com.justgo.util.DataBindingFragment
 import com.justgo.databinding.FragmentSelectSubjectBinding
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.find
-import org.jetbrains.anko.support.v4.toast
 
 
 class SelectSubjectFragment : DataBindingFragment<FragmentSelectSubjectBinding>(), AnkoLogger {

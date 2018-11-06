@@ -4,18 +4,15 @@ package com.justgo.ui.main
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.google.gson.JsonObject
 
 import com.justgo.R
-import com.justgo.Util.DataBindingFragment
+import com.justgo.util.DataBindingFragment
 import com.justgo.databinding.FragmentSetRangeBinding
 import io.apptik.widget.MultiSlider
-import kotlinx.android.synthetic.main.fragment_set_location.*
 import kotlinx.android.synthetic.main.fragment_set_range.*
 import org.jetbrains.anko.find
 

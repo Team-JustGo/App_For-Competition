@@ -4,17 +4,15 @@ package com.justgo.ui.main
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import com.justgo.R
-import com.justgo.Util.DataBindingFragment
+import com.justgo.util.DataBindingFragment
 import com.justgo.databinding.FragmentSetTransportationBinding
 import org.jetbrains.anko.backgroundResource
-import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.textColorResource
 
 class SetTransportationFragment : DataBindingFragment<FragmentSetTransportationBinding>() {

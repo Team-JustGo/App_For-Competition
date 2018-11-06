@@ -20,16 +20,19 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.android.PolyUtil
-import com.justgo.Util.DataBindingActivity
+import com.justgo.util.DataBindingActivity
 import com.justgo.databinding.ActivityNavigationBinding
 import com.justgo.ui.Arrive.ArriveActivity
 import org.jetbrains.anko.toast
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class NavigationActivity : DataBindingActivity<ActivityNavigationBinding>(), OnMapReadyCallback {
     override fun getLayoutId(): Int = R.layout.activity_navigation
 
-    val viewModel by lazy { ViewModelProviders.of(this)[NavigationViewModel::class.java] }
+    val viewModel: NavigationViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel

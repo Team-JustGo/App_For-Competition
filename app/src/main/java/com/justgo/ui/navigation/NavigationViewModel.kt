@@ -4,11 +4,12 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
-import com.justgo.Connecter.getDirection
-import com.justgo.Model.DirectionModel
-import com.justgo.Util.SingleLiveEvent
+import com.justgo.connecter.API
+import com.justgo.connecter.getDirection
+import com.justgo.model.DirectionModel
+import com.justgo.util.SingleLiveEvent
 
-class NavigationViewModel : ViewModel() {
+class NavigationViewModel() : ViewModel() {
     val _direction = MutableLiveData<ArrayList<DirectionModel.Point>>()
     val _transit = MutableLiveData<String>()
     val _type = MutableLiveData<String>()
@@ -20,6 +21,8 @@ class NavigationViewModel : ViewModel() {
     val type get() = _type as LiveData<String>
     val polyLine get() = _polyLine as LiveData<String>
     var index = 0
+
+
 
 
     fun getNavigation(transport: String, lat: Double, lng: Double, desLat: Double, desLng: Double) {

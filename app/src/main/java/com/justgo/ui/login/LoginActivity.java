@@ -12,24 +12,18 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 import com.justgo.R;
-import com.justgo.Util.FacebookLoginCallBack;
-import com.justgo.Util.SessionCallback;
+import com.justgo.util.FacebookLoginCallBack;
 import com.justgo.ui.main.MainActivity;
-import com.kakao.auth.AuthType;
-import com.kakao.auth.Session;
 
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.List;
-
-import static com.justgo.Util.PrefManagerKt.saveToken;
 
 public class LoginActivity extends AppCompatActivity {
     private FacebookLoginCallBack facebookLoginCallBack;

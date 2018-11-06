@@ -3,12 +3,11 @@ package com.justgo.ui.MyTrip
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.justgo.Adapter.MyTripListAdapter
-import com.justgo.Connecter.getTourInfo
-import com.justgo.Model.MyTripItem
-import com.justgo.Model.MyTripTagItem
+import com.justgo.adapter.MyTripListAdapter
+import com.justgo.connecter.getTourInfo
+import com.justgo.model.MyTripItem
 import com.justgo.R
-import com.justgo.Util.getToken
+import com.justgo.util.getToken
 import kotlinx.android.synthetic.main.activity_mytrip.*
 
 class MyTripActivity : AppCompatActivity() {

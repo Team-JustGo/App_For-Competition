@@ -3,10 +3,9 @@ package com.justgo.ui.main
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.util.Log
-import com.justgo.Connecter.getTourList
-import com.justgo.Util.DisposableViewModel
-import com.justgo.Util.SingleLiveEvent
-import org.jetbrains.anko.toast
+import com.justgo.connecter.getTourList
+import com.justgo.util.DisposableViewModel
+import com.justgo.util.SingleLiveEvent
 
 
 class MainViewModel : DisposableViewModel() {

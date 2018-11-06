@@ -7,28 +7,21 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
-import android.transition.Fade
 import android.transition.TransitionManager
-import android.view.animation.OvershootInterpolator
-import com.justgo.Connecter.getProfile
-import com.justgo.Connecter.getTourList
+import com.justgo.connecter.getProfile
 import com.justgo.R
-import com.justgo.Util.DataBindingActivity
-import com.justgo.Util.getToken
-import com.justgo.Util.removeToken
+import com.justgo.util.DataBindingActivity
+import com.justgo.util.getToken
+import com.justgo.util.removeToken
 import com.justgo.databinding.ActivityMainBinding
 import com.justgo.ui.MyTrip.MyTripActivity
 import com.justgo.ui.SelectTrip.SelectTripActivity
-import com.justgo.ui.SplashActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_backdrop.*
 import kotlinx.android.synthetic.main.main_profile.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
-import retrofit2.http.QueryMap
 
 class MainActivity : DataBindingActivity<ActivityMainBinding>() {
 

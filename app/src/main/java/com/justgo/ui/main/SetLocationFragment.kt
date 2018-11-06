@@ -2,7 +2,6 @@ package com.justgo.ui.main
 
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.pm.PackageManager
@@ -17,13 +16,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
-import com.gun0912.tedpermission.PermissionListener
-import com.gun0912.tedpermission.TedPermission
 import com.justgo.R
-import com.justgo.Util.DataBindingFragment
+import com.justgo.util.DataBindingFragment
 import com.justgo.databinding.FragmentSetLocationBinding
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.debug
 import org.jetbrains.anko.find
 import org.jetbrains.anko.info
 

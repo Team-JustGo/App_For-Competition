@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.justgo.Adapter.ArriveNearListAdapter
-import com.justgo.Connecter.getTourInfo
-import com.justgo.Model.ArriveItem
+import com.justgo.adapter.ArriveNearListAdapter
+import com.justgo.connecter.getTourInfo
+import com.justgo.model.ArriveItem
 import com.justgo.R
 
 
