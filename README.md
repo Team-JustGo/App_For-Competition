@@ -1,2 +1,2 @@
 # App_For-Competition
-## 2018년 서울시 앱 공모전 출품작(JustGo)
+## 무작위 관광지 추천 서비스, JustGo
