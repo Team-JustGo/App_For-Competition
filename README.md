@@ -1,7 +1,7 @@
 # App_For-Competition
 ## 무작위 관광지 추천 서비스, JustGo
 
-![image](https://imgur.com/meG3sGX)
+[Imgur](https://i.imgur.com/meG3sGX.png)
 
 ## What is JustGo?
 저스트고는 아마도 세계 유일의 랜덤 블라인드 장소 추천 서비스입니다.  
